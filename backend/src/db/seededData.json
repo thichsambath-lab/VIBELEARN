@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "course.nextjs-app-router-in-depth",
+    "title": "Next.js App Router in Depth",
+    "slug": "nextjs-app-router-in-depth",
+    "summary": "Learn the App Router the way it actually works: routing and layouts, the server/client boundary, caching, and server actions.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-nextjs-app-router-in-depth/1600/900",
+    "level": "intermediate",
+    "modules": [
+      {
+        "id": "module.nextjs-app-router-in-depth-1",
+        "title": "Routing and Layouts",
+        "summary": "How the App Router turns folders into URLs, and how layouts let you share UI without re-rendering it.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.nextjs-app-router-in-depth-file-system-routing",
+            "title": "File-system routing and the app directory",
+            "slug": "nextjs-app-router-in-depth-file-system-routing",
+            "youtubeVideoId": "9602Yzvd7ik",
+            "duration": 350,
+            "notes": "The App Router maps folders to URL segments and reserved filenames to behaviour. Once you can read a folder tree as a set of routes, most of the framework stops being magic.\n\n## What this lesson covers\n\n- Map folders and page files to URL segments\n\n- Use route groups to organise without affecting the URL\n\n- Recognise the reserved files: page, layout, loading, error, not-found\n\nThis lesson sits in Routing and Layouts, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-layouts-and-templates",
+            "title": "Layouts, templates, and shared UI",
+            "slug": "nextjs-app-router-in-depth-layouts-and-templates",
+            "youtubeVideoId": "k48WMdl2eUc",
+            "duration": 380,
+            "notes": "Layouts persist across navigations and keep their state; templates remount on every navigation. Choosing the wrong one is why your sidebar scroll position keeps resetting.\n\n## What this lesson covers\n\n- Nest layouts to share chrome across a section\n\n- Know when state persistence makes a template the wrong choice\n\n- Colocate loading and error UI with the layout it belongs to\n\nThis lesson sits in Routing and Layouts, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-dynamic-routes-and-params",
+            "title": "Dynamic routes and route params",
+            "slug": "nextjs-app-router-in-depth-dynamic-routes-and-params",
+            "youtubeVideoId": "j3QJ1Rhxxbw",
+            "duration": 496,
+            "notes": "Dynamic segments capture values out of the URL and hand them to your page. Pre-generating the known ones turns a database read into a static file.\n\n## What this lesson covers\n\n- Capture single, catch-all, and optional catch-all segments\n\n- Read params and search params inside a page\n\n- Pre-render known routes with generateStaticParams\n\nThis lesson sits in Routing and Layouts, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.nextjs-app-router-in-depth-2",
+        "title": "Server and Client Components",
+        "summary": "The boundary that defines the App Router: what runs on the server, what ships to the browser, and how data crosses between them.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.nextjs-app-router-in-depth-server-components",
+            "title": "What server components actually do",
+            "slug": "nextjs-app-router-in-depth-server-components",
+            "youtubeVideoId": "rGPpQdbDbwo",
+            "duration": 948,
+            "notes": "Server components run on the server and send rendered output rather than code. That is why they can read a database directly and why they add nothing to your bundle.\n\n## What this lesson covers\n\n- Render on the server and ship no component code to the client\n\n- Read data and secrets directly, without an API round trip\n\n- Understand why server components cannot hold state or effects\n\nThis lesson sits in Server and Client Components, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-use-client-boundary",
+            "title": "The \"use client\" boundary",
+            "slug": "nextjs-app-router-in-depth-use-client-boundary",
+            "youtubeVideoId": "Qdkg_mrniLk",
+            "duration": 634,
+            "notes": "The directive does not mark one component as interactive — it marks the entry point to a client subtree. Everything imported below it goes to the browser too.\n\n## What this lesson covers\n\n- Place the directive at the boundary, not on every file\n\n- Push interactivity to the leaves to keep the bundle small\n\n- Spot the accidental import that drags the server tree client-side\n\nThis lesson sits in Server and Client Components, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-passing-data-across-the-boundary",
+            "title": "Passing data across the boundary",
+            "slug": "nextjs-app-router-in-depth-passing-data-across-the-boundary",
+            "youtubeVideoId": "dMCSiA5gzkU",
+            "duration": 379,
+            "notes": "Props crossing into a client component get serialised, which is why functions and class instances fail. Composition through children keeps server-rendered content out of the bundle.\n\n## What this lesson covers\n\n- Pass only serialisable props into client components\n\n- Use children to slot server content inside a client shell\n\n- Avoid leaking server-only data through props\n\nThis lesson sits in Server and Client Components, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.nextjs-app-router-in-depth-3",
+        "title": "Data Fetching and Caching",
+        "summary": "Fetching data where it belongs, understanding what gets cached, and streaming the slow parts so the page appears immediately.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.nextjs-app-router-in-depth-fetching-in-server-components",
+            "title": "Fetching data in server components",
+            "slug": "nextjs-app-router-in-depth-fetching-in-server-components",
+            "youtubeVideoId": "WKfPctdIDek",
+            "duration": 261,
+            "notes": "A server component can simply await its data. No client-side loading state, no waterfall of effects, and no exposed credentials.\n\n## What this lesson covers\n\n- Await data directly inside an async server component\n\n- Fetch in parallel instead of sequential waterfalls\n\n- Keep tokens and database access on the server\n\nThis lesson sits in Data Fetching and Caching, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-caching-and-revalidation",
+            "title": "Caching and revalidation",
+            "slug": "nextjs-app-router-in-depth-caching-and-revalidation",
+            "youtubeVideoId": "VBlSe8tvg4U",
+            "duration": 1522,
+            "notes": "Caching is the part people get burned by. Know what layer holds your data, how long it holds it, and which lever invalidates it.\n\n## What this lesson covers\n\n- Distinguish request-level caching from the full route cache\n\n- Revalidate on a timer or on demand by tag\n\n- Opt out deliberately when data must always be fresh\n\nThis lesson sits in Data Fetching and Caching, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-streaming-and-suspense",
+            "title": "Streaming with Suspense",
+            "slug": "nextjs-app-router-in-depth-streaming-and-suspense",
+            "youtubeVideoId": "2o5m1ovfl3c",
+            "duration": 187,
+            "notes": "Streaming lets the fast parts of a page render while the slow parts are still loading, so time to first paint stops being hostage to your slowest query.\n\n## What this lesson covers\n\n- Wrap slow subtrees in Suspense with a real fallback\n\n- Use loading files for route-level streaming\n\n- Avoid blocking the shell on a single slow request\n\nThis lesson sits in Data Fetching and Caching, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.nextjs-app-router-in-depth-4",
+        "title": "Server Actions and Mutations",
+        "summary": "Writing data from the client without hand-building an API: actions, form validation, and optimistic UI.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.nextjs-app-router-in-depth-server-actions-basics",
+            "title": "Writing your first server action",
+            "slug": "nextjs-app-router-in-depth-server-actions-basics",
+            "youtubeVideoId": "O94ESaJtHtM",
+            "duration": 471,
+            "notes": "A server action is a function that only ever runs on the server but can be called from the client. It replaces the route handler you would otherwise write by hand.\n\n## What this lesson covers\n\n- Define an action and call it from a form or an event\n\n- Revalidate the affected data after a write\n\n- Keep write credentials on the server side of the call\n\nThis lesson sits in Server Actions and Mutations, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-forms-and-validation",
+            "title": "Forms, validation, and error states",
+            "slug": "nextjs-app-router-in-depth-forms-and-validation",
+            "youtubeVideoId": "tLhcyBfljYo",
+            "duration": 1016,
+            "notes": "Client-side validation is a convenience; the server check is the real one. Parse the payload on arrival and return errors the form can render.\n\n## What this lesson covers\n\n- Validate submitted data on the server before writing\n\n- Return structured field errors back to the form\n\n- Keep the form usable when JavaScript has not loaded\n\nThis lesson sits in Server Actions and Mutations, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.nextjs-app-router-in-depth-optimistic-updates",
+            "title": "Optimistic updates",
+            "slug": "nextjs-app-router-in-depth-optimistic-updates",
+            "youtubeVideoId": "M3mGY0pgFk0",
+            "duration": 525,
+            "notes": "Optimistic UI shows the expected result immediately and reconciles when the server answers. The interesting part is what happens when the server disagrees.\n\n## What this lesson covers\n\n- Render the expected state before the server confirms\n\n- Roll back cleanly when the action fails\n\n- Keep optimistic state scoped to the component that owns it\n\nThis lesson sits in Server Actions and Mutations, part of Next.js App Router in Depth. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.react-performance-engineering",
+    "title": "React Performance Engineering",
+    "slug": "react-performance-engineering",
+    "summary": "Measure before you optimise. Profiling, render behaviour, concurrent features, and shipping less JavaScript.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-react-performance-engineering/1600/900",
+    "level": "advanced",
+    "modules": [
+      {
+        "id": "module.react-performance-engineering-1",
+        "title": "Measuring Performance",
+        "summary": "Getting numbers before you change anything: profiling tools, field metrics, and finding wasted work.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.react-performance-engineering-react-devtools-profiler",
+            "title": "Profiling with React DevTools",
+            "slug": "react-performance-engineering-react-devtools-profiler",
+            "youtubeVideoId": "Qwb-Za6cBws",
+            "duration": 778,
+            "notes": "The profiler records what rendered, how long it took, and why it happened. Reading a flame graph correctly is most of the diagnostic work.\n\n## What this lesson covers\n\n- Record a realistic interaction, not an idle page\n\n- Read the flame graph and the ranked chart\n\n- Turn on \"why did this render\" to get the cause\n\nThis lesson sits in Measuring Performance, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.react-performance-engineering-core-web-vitals",
+            "title": "Core Web Vitals in a React app",
+            "slug": "react-performance-engineering-core-web-vitals",
+            "youtubeVideoId": "cGiSr0MilsI",
+            "duration": 886,
+            "notes": "Lab numbers on your laptop are not what users experience. Vitals give you a field measure of loading, responsiveness, and visual stability.\n\n## What this lesson covers\n\n- Interpret LCP, INP, and CLS in practical terms\n\n- Separate lab data from field data\n\n- Attribute a poor score to a specific element or interaction\n\nThis lesson sits in Measuring Performance, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.react-performance-engineering-finding-wasted-renders",
+            "title": "Finding wasted renders",
+            "slug": "react-performance-engineering-finding-wasted-renders",
+            "youtubeVideoId": "L5kCvTuddGE",
+            "duration": 558,
+            "notes": "Most React slowness is a subtree re-rendering for no reason. Track it back to the prop or context value that changes identity on every render.\n\n## What this lesson covers\n\n- Trace a re-render back to the prop that changed\n\n- Spot object and function props recreated each render\n\n- Recognise context as a re-render broadcast\n\nThis lesson sits in Measuring Performance, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.react-performance-engineering-2",
+        "title": "Rendering Optimization",
+        "summary": "The tools for cutting render work — memoisation and stable identity — and when reaching for them is the wrong move.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.react-performance-engineering-react-memo",
+            "title": "When memo actually helps",
+            "slug": "react-performance-engineering-react-memo",
+            "youtubeVideoId": "Yh2eH4fXgbU",
+            "duration": 617,
+            "notes": "memo skips a re-render when props are shallow-equal. It costs a comparison on every render, so applying it everywhere makes things slower, not faster.\n\n## What this lesson covers\n\n- Apply memo to expensive subtrees with stable props\n\n- Understand shallow comparison and why objects defeat it\n\n- Recognise when restructuring beats memoising\n\nThis lesson sits in Rendering Optimization, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.react-performance-engineering-usememo-and-usecallback",
+            "title": "useMemo and useCallback in practice",
+            "slug": "react-performance-engineering-usememo-and-usecallback",
+            "youtubeVideoId": "vpE9I_eqHdM",
+            "duration": 821,
+            "notes": "These hooks preserve identity between renders. Their value is in what depends on that identity, not in the caching itself.\n\n## What this lesson covers\n\n- Memoise values that feed memoised children or effects\n\n- Get the dependency array right, every time\n\n- Skip memoisation when the computation is trivial\n\nThis lesson sits in Rendering Optimization, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.react-performance-engineering-keys-and-reconciliation",
+            "title": "Keys and list reconciliation",
+            "slug": "react-performance-engineering-keys-and-reconciliation",
+            "youtubeVideoId": "fGxKOmCuH5w",
+            "duration": 591,
+            "notes": "Keys tell React which item is which. Using an array index means insertions silently reassign state to the wrong row.\n\n## What this lesson covers\n\n- Use stable identity for keys, never the array index\n\n- Understand how reconciliation matches elements between renders\n\n- Diagnose lost input state in a reordered list\n\nThis lesson sits in Rendering Optimization, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.react-performance-engineering-3",
+        "title": "Concurrent React",
+        "summary": "Keeping the interface responsive while expensive work happens: transitions, deferred values, and Suspense.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.react-performance-engineering-usetransition",
+            "title": "Marking updates with useTransition",
+            "slug": "react-performance-engineering-usetransition",
+            "youtubeVideoId": "1xjSQJWejZM",
+            "duration": 641,
+            "notes": "A transition marks an update as interruptible, so typing stays smooth while an expensive list re-filters behind it.\n\n## What this lesson covers\n\n- Separate an urgent update from a non-urgent one\n\n- Show pending state without blocking input\n\n- Recognise the interactions worth marking\n\nThis lesson sits in Concurrent React, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.react-performance-engineering-usedeferredvalue",
+            "title": "Deferring expensive values",
+            "slug": "react-performance-engineering-usedeferredvalue",
+            "youtubeVideoId": "jCGMedd6IWA",
+            "duration": 472,
+            "notes": "A deferred value lags behind the real one on purpose, letting the urgent render finish first with the previous result.\n\n## What this lesson covers\n\n- Defer a value that drives expensive rendering\n\n- Choose between deferring a value and wrapping an update\n\n- Communicate staleness to the user while it catches up\n\nThis lesson sits in Concurrent React, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.react-performance-engineering-suspense-for-data",
+            "title": "Suspense for data loading",
+            "slug": "react-performance-engineering-suspense-for-data",
+            "youtubeVideoId": "MBlZ8Wzkbi4",
+            "duration": 1001,
+            "notes": "Suspense moves loading state out of the component and into its boundary, so you stop threading isLoading through the tree.\n\n## What this lesson covers\n\n- Place boundaries where a meaningful fallback exists\n\n- Avoid a single boundary that blocks the whole page\n\n- Combine Suspense with error boundaries for failures\n\nThis lesson sits in Concurrent React, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.react-performance-engineering-4",
+        "title": "Bundle and Load Performance",
+        "summary": "The work that happens before React even runs: splitting code, loading it at the right moment, and handling heavy assets.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.react-performance-engineering-code-splitting",
+            "title": "Code splitting that pays off",
+            "slug": "react-performance-engineering-code-splitting",
+            "youtubeVideoId": "MUSoj2JcD4A",
+            "duration": 330,
+            "notes": "Splitting only helps if the split-off code was genuinely not needed for the first screen. Analyse the bundle before you cut it.\n\n## What this lesson covers\n\n- Read a bundle analysis and find the heavy dependency\n\n- Split along route and interaction boundaries\n\n- Avoid splitting code that is needed immediately anyway\n\nThis lesson sits in Bundle and Load Performance, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.react-performance-engineering-lazy-loading-and-prefetch",
+            "title": "Lazy loading and prefetching",
+            "slug": "react-performance-engineering-lazy-loading-and-prefetch",
+            "youtubeVideoId": "fZ4zKgVXOP4",
+            "duration": 1370,
+            "notes": "Lazy loading defers the download; prefetching starts it early on a hint like hover. Together they hide the network cost from the user.\n\n## What this lesson covers\n\n- Load a component only when it is about to be needed\n\n- Prefetch on intent signals such as hover or viewport\n\n- Keep a fallback that does not shift the layout\n\nThis lesson sits in Bundle and Load Performance, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.react-performance-engineering-images-and-fonts",
+            "title": "Images and fonts",
+            "slug": "react-performance-engineering-images-and-fonts",
+            "youtubeVideoId": "0fONene3OIA",
+            "duration": 403,
+            "notes": "Images and fonts usually dominate loading performance and layout shift. Sizing, formats, and font display strategy fix most of it.\n\n## What this lesson covers\n\n- Serve correctly sized, modern image formats\n\n- Reserve space so images do not shift the layout\n\n- Choose a font loading strategy that avoids invisible text\n\nThis lesson sits in Bundle and Load Performance, part of React Performance Engineering. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.typescript-for-application-developers",
+    "title": "TypeScript for Application Developers",
+    "slug": "typescript-for-application-developers",
+    "summary": "Go past annotations. Structural typing, narrowing, generics, and the type-level tools that make invalid states impossible.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-typescript-for-application-developers/1600/900",
+    "level": "intermediate",
+    "modules": [
+      {
+        "id": "module.typescript-for-application-developers-1",
+        "title": "How the Type System Thinks",
+        "summary": "The mental model underneath everything else: structural compatibility, unions, and narrowing.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.typescript-for-application-developers-structural-typing",
+            "title": "Structural typing and assignability",
+            "slug": "typescript-for-application-developers-structural-typing",
+            "youtubeVideoId": "zfQgsGXTpOg",
+            "duration": 709,
+            "notes": "TypeScript compares shapes, not names. Two unrelated types are interchangeable if their members line up, which explains most surprising assignability errors.\n\n## What this lesson covers\n\n- Compare types by structure rather than declaration\n\n- Read an assignability error from the mismatched member up\n\n- Use branded types when structural compatibility is too loose\n\nThis lesson sits in How the Type System Thinks, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-unions-and-narrowing",
+            "title": "Unions and narrowing",
+            "slug": "typescript-for-application-developers-unions-and-narrowing",
+            "youtubeVideoId": "CG3_Y9T03J4",
+            "duration": 620,
+            "notes": "A discriminated union plus a check on the discriminant is the workhorse pattern of typed application code. Narrowing is how the compiler follows your control flow.\n\n## What this lesson covers\n\n- Model alternatives as a discriminated union\n\n- Narrow with typeof, in, and discriminant checks\n\n- Make a switch exhaustive with a never assertion\n\nThis lesson sits in How the Type System Thinks, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-literal-types-and-const",
+            "title": "Literal types and const assertions",
+            "slug": "typescript-for-application-developers-literal-types-and-const",
+            "youtubeVideoId": "6M9aZzm-kEc",
+            "duration": 338,
+            "notes": "Widening is why your string turned into string. A const assertion keeps the literal, which is what makes union-of-literals modelling work.\n\n## What this lesson covers\n\n- Understand literal widening and when it happens\n\n- Freeze a literal shape with as const\n\n- Derive a union of allowed values from a constant array\n\nThis lesson sits in How the Type System Thinks, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.typescript-for-application-developers-2",
+        "title": "Generics",
+        "summary": "Writing code that keeps type information flowing through it instead of collapsing to any.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.typescript-for-application-developers-generic-functions",
+            "title": "Generic functions and inference",
+            "slug": "typescript-for-application-developers-generic-functions",
+            "youtubeVideoId": "EcCTIExsqmI",
+            "duration": 772,
+            "notes": "A type parameter links an input type to an output type. Most of the skill is letting inference do the work rather than annotating call sites.\n\n## What this lesson covers\n\n- Relate argument and return types with a type parameter\n\n- Let inference fill in type arguments at the call site\n\n- Recognise when a generic adds nothing over a union\n\nThis lesson sits in Generics, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-generic-constraints",
+            "title": "Constraints and default type parameters",
+            "slug": "typescript-for-application-developers-generic-constraints",
+            "youtubeVideoId": "zfLpzpH1t6Q",
+            "duration": 253,
+            "notes": "Constraints say what a type parameter must at least be. Combined with keyof, they give you property access that stays typed.\n\n## What this lesson covers\n\n- Constrain a parameter with extends\n\n- Use keyof to type property access generically\n\n- Give a type parameter a sensible default\n\nThis lesson sits in Generics, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-generic-react-components",
+            "title": "Generic components in React",
+            "slug": "typescript-for-application-developers-generic-react-components",
+            "youtubeVideoId": "5s6dIkrv6Y4",
+            "duration": 407,
+            "notes": "A typed list component should tell you what its render callback receives. Generic props are how a reusable component stays specific at each use.\n\n## What this lesson covers\n\n- Type a component over the shape of its items\n\n- Keep render props and callbacks correctly typed\n\n- Forward refs without losing the generic parameter\n\nThis lesson sits in Generics, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.typescript-for-application-developers-3",
+        "title": "Advanced Types",
+        "summary": "The type-level features that let a type be computed from another type, and the judgement to use them sparingly.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.typescript-for-application-developers-conditional-types",
+            "title": "Conditional types and infer",
+            "slug": "typescript-for-application-developers-conditional-types",
+            "youtubeVideoId": "KcDzkOJpCaI",
+            "duration": 863,
+            "notes": "A conditional type branches on assignability, and infer pulls a type out of the branch it matched. This is how utility types are built.\n\n## What this lesson covers\n\n- Branch a type on an extends check\n\n- Extract inner types with infer\n\n- Understand distribution over union members\n\nThis lesson sits in Advanced Types, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-mapped-types",
+            "title": "Mapped types and key remapping",
+            "slug": "typescript-for-application-developers-mapped-types",
+            "youtubeVideoId": "iCEJY9XpfG8",
+            "duration": 409,
+            "notes": "Mapped types transform every property of a type at once, which is where Partial, Readonly, and their friends come from.\n\n## What this lesson covers\n\n- Transform every property of an existing type\n\n- Add or strip optional and readonly modifiers\n\n- Remap keys with an as clause\n\nThis lesson sits in Advanced Types, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-template-literal-types",
+            "title": "Template literal types",
+            "slug": "typescript-for-application-developers-template-literal-types",
+            "youtubeVideoId": "nskIP1iyrAo",
+            "duration": 1151,
+            "notes": "String types can be composed and pattern-matched, which lets you type things like event names and route paths precisely.\n\n## What this lesson covers\n\n- Compose string types from other types\n\n- Constrain string shapes such as event or route names\n\n- Combine template literals with key remapping\n\nThis lesson sits in Advanced Types, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.typescript-for-application-developers-4",
+        "title": "TypeScript in Practice",
+        "summary": "Configuration, external data, and the places typed code meets the untyped world.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.typescript-for-application-developers-tsconfig-strictness",
+            "title": "tsconfig and strictness settings",
+            "slug": "typescript-for-application-developers-tsconfig-strictness",
+            "youtubeVideoId": "0XrviXgk_rY",
+            "duration": 593,
+            "notes": "Strict mode is a set of independent flags. Knowing what each one catches lets you adopt them incrementally on an existing codebase.\n\n## What this lesson covers\n\n- Understand what each strict flag actually checks\n\n- Turn on strictness incrementally in a legacy project\n\n- Configure module resolution to match your runtime\n\nThis lesson sits in TypeScript in Practice, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-typing-apis-with-zod",
+            "title": "Typing external data at the boundary",
+            "slug": "typescript-for-application-developers-typing-apis-with-zod",
+            "youtubeVideoId": "9UVPk0Ulm6U",
+            "duration": 434,
+            "notes": "Data from the network is unknown until you prove otherwise. A runtime schema validates it once and gives you a static type for free.\n\n## What this lesson covers\n\n- Parse unknown input instead of casting it\n\n- Derive a static type from a runtime schema\n\n- Fail loudly at the boundary rather than deep inside\n\nThis lesson sits in TypeScript in Practice, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.typescript-for-application-developers-declaration-files",
+            "title": "Declaration files and untyped packages",
+            "slug": "typescript-for-application-developers-declaration-files",
+            "youtubeVideoId": "s_CZeWuEZ_s",
+            "duration": 349,
+            "notes": "Sooner or later a dependency ships no types. Writing a small declaration file is faster and safer than sprinkling any across your codebase.\n\n## What this lesson covers\n\n- Write a minimal declaration for an untyped module\n\n- Augment the types of an existing package\n\n- Declare global types without polluting every file\n\nThis lesson sits in TypeScript in Practice, part of TypeScript for Application Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.building-ai-apps-with-llms",
+    "title": "Building AI Apps with LLMs",
+    "slug": "building-ai-apps-with-llms",
+    "summary": "From first API call to a feature you can ship: prompting, structured output, tool calling, streaming, and cost control.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-building-ai-apps-with-llms/1600/900",
+    "level": "intermediate",
+    "modules": [
+      {
+        "id": "module.building-ai-apps-with-llms-1",
+        "title": "LLM Fundamentals",
+        "summary": "What the model is doing, what it costs, and which knobs actually change the output.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.building-ai-apps-with-llms-tokens-and-context-windows",
+            "title": "Tokens and context windows",
+            "slug": "building-ai-apps-with-llms-tokens-and-context-windows",
+            "youtubeVideoId": "-QVoIxEpFkM",
+            "duration": 691,
+            "notes": "Models read tokens, not characters, and they can only see a fixed window of them. Both your bill and your failures come back to this.\n\n## What this lesson covers\n\n- Understand tokenisation and why cost is per token\n\n- Budget a prompt against the context window\n\n- Recognise the failure modes of an overflowing context\n\nThis lesson sits in LLM Fundamentals, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-temperature-and-sampling",
+            "title": "Temperature and sampling",
+            "slug": "building-ai-apps-with-llms-temperature-and-sampling",
+            "youtubeVideoId": "-BBulGM6xF0",
+            "duration": 491,
+            "notes": "Sampling parameters decide how the next token is picked. Low temperature for extraction and classification, higher for anything that should feel varied.\n\n## What this lesson covers\n\n- Trade determinism against variety with temperature\n\n- Know what top-p changes and when to touch it\n\n- Pick settings per task rather than globally\n\nThis lesson sits in LLM Fundamentals, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-choosing-a-model",
+            "title": "Choosing a model for the job",
+            "slug": "building-ai-apps-with-llms-choosing-a-model",
+            "youtubeVideoId": "pYax2rupKEY",
+            "duration": 417,
+            "notes": "The largest model is rarely the right default. Match capability, latency, and price to what the specific step of your product needs.\n\n## What this lesson covers\n\n- Weigh capability against latency and cost\n\n- Route easy steps to a smaller, faster model\n\n- Build an evaluation before committing to a choice\n\nThis lesson sits in LLM Fundamentals, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.building-ai-apps-with-llms-2",
+        "title": "Prompting That Holds Up",
+        "summary": "Writing prompts that behave the same way on the thousandth call as they did on the first.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.building-ai-apps-with-llms-system-prompts",
+            "title": "Designing the system prompt",
+            "slug": "building-ai-apps-with-llms-system-prompts",
+            "youtubeVideoId": "MO3U1X8-NNQ",
+            "duration": 1261,
+            "notes": "The system prompt sets role, constraints, and refusals. It is followed more reliably than instructions buried in user content, so the load-bearing rules belong here.\n\n## What this lesson covers\n\n- Separate durable rules from per-request input\n\n- State constraints and refusals explicitly\n\n- Keep it short enough to stay affordable per call\n\nThis lesson sits in Prompting That Holds Up, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-few-shot-prompting",
+            "title": "Few-shot examples",
+            "slug": "building-ai-apps-with-llms-few-shot-prompting",
+            "youtubeVideoId": "9qdgEBVkWR4",
+            "duration": 271,
+            "notes": "Examples communicate format and edge-case handling far better than description. Two well-chosen ones usually beat a paragraph of instructions.\n\n## What this lesson covers\n\n- Show the format instead of describing it\n\n- Choose examples that cover the tricky cases\n\n- Watch for examples that bias the output\n\nThis lesson sits in Prompting That Holds Up, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-structured-output",
+            "title": "Structured output and JSON",
+            "slug": "building-ai-apps-with-llms-structured-output",
+            "youtubeVideoId": "CllLqPwCjD4",
+            "duration": 555,
+            "notes": "If your code consumes the output, it needs a schema. Constrain the shape, then validate the response before anything downstream touches it.\n\n## What this lesson covers\n\n- Constrain responses to a declared schema\n\n- Validate the parsed output at runtime\n\n- Handle the case where the model returns nothing usable\n\nThis lesson sits in Prompting That Holds Up, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.building-ai-apps-with-llms-3",
+        "title": "Tool Calling and Agents",
+        "summary": "Letting the model act: exposing functions, running the loop, and keeping the whole thing bounded.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.building-ai-apps-with-llms-tool-calling",
+            "title": "Tool calling fundamentals",
+            "slug": "building-ai-apps-with-llms-tool-calling",
+            "youtubeVideoId": "gMeTK6zzaO4",
+            "duration": 1874,
+            "notes": "You describe the functions, the model chooses one and supplies arguments, your code executes it. The description of each tool matters as much as the prompt.\n\n## What this lesson covers\n\n- Describe a tool so the model uses it correctly\n\n- Execute the call and feed the result back\n\n- Validate arguments before executing anything\n\nThis lesson sits in Tool Calling and Agents, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-agent-loops",
+            "title": "Building an agent loop",
+            "slug": "building-ai-apps-with-llms-agent-loops",
+            "youtubeVideoId": "GErEgIOMy_4",
+            "duration": 950,
+            "notes": "An agent is a loop: call the model, run the tool it asked for, feed the result back, repeat. Every loop needs a stopping condition it cannot argue with.\n\n## What this lesson covers\n\n- Structure the call, execute, feed back cycle\n\n- Bound the loop with iteration and token limits\n\n- Log each step so failures can be replayed\n\nThis lesson sits in Tool Calling and Agents, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-guardrails-and-evals",
+            "title": "Guardrails and evaluation",
+            "slug": "building-ai-apps-with-llms-guardrails-and-evals",
+            "youtubeVideoId": "GvNrhULVpHI",
+            "duration": 438,
+            "notes": "Without an evaluation set you cannot tell an improvement from a regression. Guardrails then enforce the limits your evaluation exposed.\n\n## What this lesson covers\n\n- Build a small, honest evaluation set early\n\n- Score changes against it before shipping\n\n- Enforce boundaries the model must not cross\n\nThis lesson sits in Tool Calling and Agents, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.building-ai-apps-with-llms-4",
+        "title": "Shipping to Production",
+        "summary": "The engineering around the model: streaming, cost, caching, and behaving well under load.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.building-ai-apps-with-llms-streaming-responses",
+            "title": "Streaming responses to the browser",
+            "slug": "building-ai-apps-with-llms-streaming-responses",
+            "youtubeVideoId": "hOAAg1WaZh8",
+            "duration": 536,
+            "notes": "A streamed answer feels immediate even when total latency is unchanged. Streaming through your own server also keeps your API key off the client.\n\n## What this lesson covers\n\n- Stream tokens from the server to the browser\n\n- Render partial output without layout thrash\n\n- Handle cancellation and mid-stream errors\n\nThis lesson sits in Shipping to Production, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-cost-and-latency",
+            "title": "Managing cost and latency",
+            "slug": "building-ai-apps-with-llms-cost-and-latency",
+            "youtubeVideoId": "E3j-4XH0q4g",
+            "duration": 805,
+            "notes": "Cost is prompt design, model choice, and how often you call. Measure per-request tokens before you try to optimise anything.\n\n## What this lesson covers\n\n- Attribute spend to specific calls and prompts\n\n- Trim prompts and route by difficulty\n\n- Set timeouts and fall back gracefully\n\nThis lesson sits in Shipping to Production, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.building-ai-apps-with-llms-caching-and-rate-limits",
+            "title": "Caching and rate limits",
+            "slug": "building-ai-apps-with-llms-caching-and-rate-limits",
+            "youtubeVideoId": "u57EnkQaUTY",
+            "duration": 546,
+            "notes": "Repeated prefixes can be cached, repeated questions can be answered from your own cache, and rate limits will find you eventually — so retry with backoff.\n\n## What this lesson covers\n\n- Cache stable prompt prefixes to cut cost\n\n- Retry with exponential backoff on rate limits\n\n- Queue or shed load instead of failing hard\n\nThis lesson sits in Shipping to Production, part of Building AI Apps with LLMs. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.retrieval-augmented-generation-from-scratch",
+    "title": "Retrieval-Augmented Generation from Scratch",
+    "slug": "retrieval-augmented-generation-from-scratch",
+    "summary": "Build a RAG system that actually retrieves the right thing: embeddings, chunking, hybrid search, reranking, and grounded answers.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-retrieval-augmented-generation-from-scratch/1600/900",
+    "level": "advanced",
+    "modules": [
+      {
+        "id": "module.retrieval-augmented-generation-from-scratch-1",
+        "title": "Embeddings and Vector Search",
+        "summary": "The retrieval primitive: turning text into vectors and finding the near ones quickly.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-what-embeddings-are",
+            "title": "What an embedding actually encodes",
+            "slug": "retrieval-augmented-generation-from-scratch-what-embeddings-are",
+            "youtubeVideoId": "wgfSDrqYMJ4",
+            "duration": 518,
+            "notes": "An embedding maps text to a point in space where nearby means related. It captures topic and usage, not truth, and definitely not recency.\n\n## What this lesson covers\n\n- Read an embedding as a position in semantic space\n\n- Know what embeddings fail to capture\n\n- Choose an embedding model for your content\n\nThis lesson sits in Embeddings and Vector Search, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-vector-databases",
+            "title": "Vector databases and indexes",
+            "slug": "retrieval-augmented-generation-from-scratch-vector-databases",
+            "youtubeVideoId": "dN0lsF2cvm4",
+            "duration": 263,
+            "notes": "Exact nearest-neighbour search does not scale, so vector indexes trade a little recall for a lot of speed. Knowing the trade-off keeps you out of trouble.\n\n## What this lesson covers\n\n- Understand approximate nearest neighbour search\n\n- Trade recall against latency deliberately\n\n- Store metadata alongside vectors for filtering\n\nThis lesson sits in Embeddings and Vector Search, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-similarity-metrics",
+            "title": "Similarity metrics and thresholds",
+            "slug": "retrieval-augmented-generation-from-scratch-similarity-metrics",
+            "youtubeVideoId": "yGsGQBGzy6Y",
+            "duration": 473,
+            "notes": "Cosine similarity is the usual default, but the number it gives you is only meaningful relative to your own corpus. Calibrate the threshold, do not guess it.\n\n## What this lesson covers\n\n- Compare cosine, dot product, and euclidean distance\n\n- Calibrate a relevance threshold on real queries\n\n- Detect the case where nothing is actually relevant\n\nThis lesson sits in Embeddings and Vector Search, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.retrieval-augmented-generation-from-scratch-2",
+        "title": "Ingestion and Indexing",
+        "summary": "Getting your content into the index in a shape that retrieves well and stays current.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-chunking-strategies",
+            "title": "Chunking strategies",
+            "slug": "retrieval-augmented-generation-from-scratch-chunking-strategies",
+            "youtubeVideoId": "pIGRwMjhMaQ",
+            "duration": 842,
+            "notes": "Chunk size decides what a match can even mean. Too small and passages lose context; too large and the relevant sentence gets drowned.\n\n## What this lesson covers\n\n- Split on structure rather than a fixed character count\n\n- Use overlap to avoid cutting an idea in half\n\n- Keep each chunk understandable on its own\n\nThis lesson sits in Ingestion and Indexing, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-metadata-and-filtering",
+            "title": "Metadata and filtered retrieval",
+            "slug": "retrieval-augmented-generation-from-scratch-metadata-and-filtering",
+            "youtubeVideoId": "RPpGIxmdZYs",
+            "duration": 744,
+            "notes": "Metadata turns semantic search into scoped semantic search. Filtering by source, type, or date removes whole classes of wrong answer.\n\n## What this lesson covers\n\n- Attach source, type, and timestamp to every chunk\n\n- Filter before ranking to cut the candidate set\n\n- Use metadata to attribute answers back to a source\n\nThis lesson sits in Ingestion and Indexing, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-keeping-the-index-fresh",
+            "title": "Keeping the index fresh",
+            "slug": "retrieval-augmented-generation-from-scratch-keeping-the-index-fresh",
+            "youtubeVideoId": "PmA_0DT7zds",
+            "duration": 358,
+            "notes": "Content changes and stale chunks keep getting retrieved. Incremental reindexing driven by content events beats rebuilding everything nightly.\n\n## What this lesson covers\n\n- Reindex incrementally on content change events\n\n- Delete chunks whose source no longer exists\n\n- Version the index so a bad run can be rolled back\n\nThis lesson sits in Ingestion and Indexing, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.retrieval-augmented-generation-from-scratch-3",
+        "title": "Retrieval Quality",
+        "summary": "Where most RAG systems are won or lost: combining retrieval methods, reranking, and measuring the result.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-hybrid-search",
+            "title": "Hybrid keyword and vector search",
+            "slug": "retrieval-augmented-generation-from-scratch-hybrid-search",
+            "youtubeVideoId": "lYxGYXjfrNI",
+            "duration": 407,
+            "notes": "Vector search misses exact identifiers; keyword search misses paraphrase. Running both and fusing the rankings covers each one’s blind spot.\n\n## What this lesson covers\n\n- Combine lexical and semantic result sets\n\n- Fuse rankings rather than concatenating them\n\n- Fall back to keyword search when embeddings are unavailable\n\nThis lesson sits in Retrieval Quality, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-reranking",
+            "title": "Reranking retrieved candidates",
+            "slug": "retrieval-augmented-generation-from-scratch-reranking",
+            "youtubeVideoId": "aVgZE746OXw",
+            "duration": 315,
+            "notes": "Retrieve broadly, then rerank precisely. A reranker reads query and passage together, which is why it beats vector distance on ordering.\n\n## What this lesson covers\n\n- Retrieve a wide candidate set, then narrow it\n\n- Score query and passage jointly with a reranker\n\n- Balance the latency cost against the accuracy gain\n\nThis lesson sits in Retrieval Quality, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-evaluating-retrieval",
+            "title": "Evaluating retrieval",
+            "slug": "retrieval-augmented-generation-from-scratch-evaluating-retrieval",
+            "youtubeVideoId": "7_LTU0LA374",
+            "duration": 739,
+            "notes": "Before blaming the model for a bad answer, check whether the right passage was ever retrieved. Recall at k tells you which half of the system to fix.\n\n## What this lesson covers\n\n- Build a query set with known correct passages\n\n- Measure recall and precision at k\n\n- Separate retrieval failures from generation failures\n\nThis lesson sits in Retrieval Quality, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.retrieval-augmented-generation-from-scratch-4",
+        "title": "Grounded Generation",
+        "summary": "Turning retrieved passages into an answer that is traceable, honest, and measurable.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-grounding-and-citations",
+            "title": "Grounding answers with citations",
+            "slug": "retrieval-augmented-generation-from-scratch-grounding-and-citations",
+            "youtubeVideoId": "YZmCy-cGmbs",
+            "duration": 436,
+            "notes": "An answer the user can verify is worth far more than a confident one. Carry identifiers through retrieval so every claim can point back to a source.\n\n## What this lesson covers\n\n- Instruct the model to answer only from context\n\n- Thread source ids through to the rendered answer\n\n- Make citations clickable back to the original\n\nThis lesson sits in Grounded Generation, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-handling-no-answer",
+            "title": "Handling the no-answer case",
+            "slug": "retrieval-augmented-generation-from-scratch-handling-no-answer",
+            "youtubeVideoId": "DAmklaX4UKE",
+            "duration": 1293,
+            "notes": "The hardest behaviour to get is a clean \"I don’t know\". Make it an explicit, allowed output instead of the model’s last resort.\n\n## What this lesson covers\n\n- Detect when retrieval returned nothing relevant\n\n- Make abstaining an explicit, acceptable outcome\n\n- Offer a next step instead of a dead end\n\nThis lesson sits in Grounded Generation, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.retrieval-augmented-generation-from-scratch-end-to-end-rag-evaluation",
+            "title": "End-to-end RAG evaluation",
+            "slug": "retrieval-augmented-generation-from-scratch-end-to-end-rag-evaluation",
+            "youtubeVideoId": "cRz0BWkuwHg",
+            "duration": 643,
+            "notes": "Evaluate the pipeline the user experiences: was the answer faithful to the retrieved context, and did it address the question.\n\n## What this lesson covers\n\n- Score faithfulness to the retrieved context\n\n- Score relevance to the original question\n\n- Track both across releases to catch regressions\n\nThis lesson sits in Grounded Generation, part of Retrieval-Augmented Generation from Scratch. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.python-for-data-work",
+    "title": "Python for Data Work",
+    "slug": "python-for-data-work",
+    "summary": "A practical on-ramp to data work in Python: the language basics you need, pandas, plotting, and reproducible workflows.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-python-for-data-work/1600/900",
+    "level": "beginner",
+    "modules": [
+      {
+        "id": "module.python-for-data-work-1",
+        "title": "Python Foundations for Data",
+        "summary": "The subset of Python that data work actually uses, taught in the order you will need it.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.python-for-data-work-python-data-types",
+            "title": "Lists, dicts, and the types you will use",
+            "slug": "python-for-data-work-python-data-types",
+            "youtubeVideoId": "MZZSMaEAC2g",
+            "duration": 486,
+            "notes": "Lists, dictionaries, sets, and tuples cover almost everything before a dataframe shows up. Picking the right one is a performance decision as much as a style one.\n\n## What this lesson covers\n\n- Choose between list, dict, set, and tuple\n\n- Index, slice, and iterate without off-by-one errors\n\n- Understand mutability and why it bites\n\nThis lesson sits in Python Foundations for Data, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.python-for-data-work-comprehensions",
+            "title": "Comprehensions and iteration",
+            "slug": "python-for-data-work-comprehensions",
+            "youtubeVideoId": "YlY2g2xrl6Q",
+            "duration": 620,
+            "notes": "A comprehension is a filter and a transform in one line. Readable when the logic is small, unreadable the moment you nest three of them.\n\n## What this lesson covers\n\n- Transform and filter a sequence in one expression\n\n- Build dict and set comprehensions\n\n- Know when a plain loop is clearer\n\nThis lesson sits in Python Foundations for Data, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.python-for-data-work-files-and-csv",
+            "title": "Reading files and CSVs",
+            "slug": "python-for-data-work-files-and-csv",
+            "youtubeVideoId": "H-hagjt65cE",
+            "duration": 395,
+            "notes": "Real data arrives as a slightly wrong file. Encodings, delimiters, and missing values are the first three problems you will meet.\n\n## What this lesson covers\n\n- Read and write files safely with context managers\n\n- Parse CSV data and handle encoding issues\n\n- Deal with missing and malformed rows on load\n\nThis lesson sits in Python Foundations for Data, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.python-for-data-work-2",
+        "title": "pandas Essentials",
+        "summary": "The dataframe workflow: loading, cleaning, reshaping, and summarising tabular data.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.python-for-data-work-dataframes-basics",
+            "title": "Series, dataframes, and indexing",
+            "slug": "python-for-data-work-dataframes-basics",
+            "youtubeVideoId": "EXIgjIBu4EU",
+            "duration": 1837,
+            "notes": "A dataframe is columns of typed series sharing an index. Once the index clicks, selection with loc and iloc stops being guesswork.\n\n## What this lesson covers\n\n- Create dataframes and inspect their dtypes\n\n- Select rows and columns with loc and iloc\n\n- Understand why the index matters\n\nThis lesson sits in pandas Essentials, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.python-for-data-work-cleaning-data",
+            "title": "Cleaning messy data",
+            "slug": "python-for-data-work-cleaning-data",
+            "youtubeVideoId": "KdmPHEnPJPs",
+            "duration": 1914,
+            "notes": "Cleaning is most of the job: missing values, duplicate rows, inconsistent categories, and columns that arrived as strings.\n\n## What this lesson covers\n\n- Handle missing values without silently distorting results\n\n- Remove duplicates and normalise categories\n\n- Convert columns to the correct dtype\n\nThis lesson sits in pandas Essentials, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.python-for-data-work-groupby-and-aggregation",
+            "title": "groupby and aggregation",
+            "slug": "python-for-data-work-groupby-and-aggregation",
+            "youtubeVideoId": "VRmXto2YA2I",
+            "duration": 665,
+            "notes": "Split, apply, combine is the pattern behind nearly every summary table you will ever produce.\n\n## What this lesson covers\n\n- Group rows and aggregate each group\n\n- Apply several aggregations at once\n\n- Pivot and reshape a summary for presentation\n\nThis lesson sits in pandas Essentials, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.python-for-data-work-3",
+        "title": "Visualising Data",
+        "summary": "Turning a result into a chart someone can read, and knowing which chart to reach for.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.python-for-data-work-matplotlib-basics",
+            "title": "Plotting with matplotlib",
+            "slug": "python-for-data-work-matplotlib-basics",
+            "youtubeVideoId": "7Lc2AxiM17o",
+            "duration": 1851,
+            "notes": "Matplotlib is verbose but total. Learn the figure and axes model once and every other plotting library makes more sense.\n\n## What this lesson covers\n\n- Work with the figure and axes objects\n\n- Plot lines, bars, and scatter charts\n\n- Label axes and export at the right resolution\n\nThis lesson sits in Visualising Data, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.python-for-data-work-seaborn-statistical-plots",
+            "title": "Statistical plots with seaborn",
+            "slug": "python-for-data-work-seaborn-statistical-plots",
+            "youtubeVideoId": "rLVCSmtoA7U",
+            "duration": 2156,
+            "notes": "Seaborn sits on matplotlib and handles distributions, categories, and relationships with far less code.\n\n## What this lesson covers\n\n- Plot distributions and relationships quickly\n\n- Facet a chart by a categorical column\n\n- Drop down to matplotlib when you need control\n\nThis lesson sits in Visualising Data, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.python-for-data-work-telling-a-story-with-charts",
+            "title": "Choosing the right chart",
+            "slug": "python-for-data-work-telling-a-story-with-charts",
+            "youtubeVideoId": "fBgk_cNCnsk",
+            "duration": 369,
+            "notes": "The chart type encodes your claim. Comparison, distribution, composition, and relationship each have a form that reads instantly and several that mislead.\n\n## What this lesson covers\n\n- Match the chart form to the question being asked\n\n- Remove decoration that competes with the data\n\n- Avoid axis choices that overstate a difference\n\nThis lesson sits in Visualising Data, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.python-for-data-work-4",
+        "title": "Reproducible Workflows",
+        "summary": "Making the analysis run again next month, on someone else’s machine, with the same result.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.python-for-data-work-jupyter-notebooks",
+            "title": "Working effectively in notebooks",
+            "slug": "python-for-data-work-jupyter-notebooks",
+            "youtubeVideoId": "YuWZNV4BkkY",
+            "duration": 1397,
+            "notes": "Notebooks are excellent for exploring and terrible at hidden state. Restart and run all is the only honest test of a notebook.\n\n## What this lesson covers\n\n- Structure a notebook so it reads top to bottom\n\n- Avoid out-of-order execution and stale state\n\n- Move stable code out into importable modules\n\nThis lesson sits in Reproducible Workflows, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.python-for-data-work-virtual-environments",
+            "title": "Virtual environments and dependencies",
+            "slug": "python-for-data-work-virtual-environments",
+            "youtubeVideoId": "Y21OR1OPC9A",
+            "duration": 545,
+            "notes": "An environment per project, with pinned versions, is what stops \"it worked yesterday\" from being a real sentence.\n\n## What this lesson covers\n\n- Create and activate a per-project environment\n\n- Pin dependencies so installs are repeatable\n\n- Keep environment files under version control\n\nThis lesson sits in Reproducible Workflows, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.python-for-data-work-automating-a-data-job",
+            "title": "Automating a recurring data job",
+            "slug": "python-for-data-work-automating-a-data-job",
+            "youtubeVideoId": "eZfD6x9FJ4E",
+            "duration": 690,
+            "notes": "The last step is turning the analysis into a script that runs on a schedule, logs what it did, and fails loudly.\n\n## What this lesson covers\n\n- Turn a notebook into a parameterised script\n\n- Log progress and failures usefully\n\n- Schedule the job and alert when it breaks\n\nThis lesson sits in Reproducible Workflows, part of Python for Data Work. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.system-design-foundations",
+    "title": "System Design Foundations",
+    "slug": "system-design-foundations",
+    "summary": "The building blocks of scalable systems — load balancing, caching, queues, partitioning, and the reliability work around them.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-system-design-foundations/1600/900",
+    "level": "intermediate",
+    "modules": [
+      {
+        "id": "module.system-design-foundations-1",
+        "title": "Core Building Blocks",
+        "summary": "The three components that appear in nearly every architecture diagram, and what each one is actually for.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.system-design-foundations-load-balancing",
+            "title": "Load balancing",
+            "slug": "system-design-foundations-load-balancing",
+            "youtubeVideoId": "chyZRNT7eEo",
+            "duration": 282,
+            "notes": "A load balancer spreads traffic and hides failed instances. The interesting choices are the algorithm and what happens to sessions.\n\n## What this lesson covers\n\n- Compare round robin, least connections, and hashing\n\n- Health check instances and drain them safely\n\n- Handle session affinity without pinning users forever\n\nThis lesson sits in Core Building Blocks, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.system-design-foundations-caching-layers",
+            "title": "Caching layers and invalidation",
+            "slug": "system-design-foundations-caching-layers",
+            "youtubeVideoId": "wh98s0XhMmQ",
+            "duration": 401,
+            "notes": "Caching is the cheapest performance win and the most common source of confusing bugs. Decide where it lives and what invalidates it before you add it.\n\n## What this lesson covers\n\n- Place caches at the edge, application, or data layer\n\n- Choose a write strategy and an eviction policy\n\n- Plan invalidation before you plan the cache\n\nThis lesson sits in Core Building Blocks, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.system-design-foundations-message-queues",
+            "title": "Queues and asynchronous work",
+            "slug": "system-design-foundations-message-queues",
+            "youtubeVideoId": "1ISRd0bS714",
+            "duration": 1606,
+            "notes": "A queue decouples producers from consumers and absorbs bursts. The cost is that you now have to think about ordering, retries, and duplicates.\n\n## What this lesson covers\n\n- Move slow work out of the request path\n\n- Handle retries, dead letters, and duplicate delivery\n\n- Reason about ordering guarantees you actually have\n\nThis lesson sits in Core Building Blocks, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.system-design-foundations-2",
+        "title": "Data at Scale",
+        "summary": "What happens to your database when one machine is no longer enough.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.system-design-foundations-sharding-and-partitioning",
+            "title": "Sharding and partitioning",
+            "slug": "system-design-foundations-sharding-and-partitioning",
+            "youtubeVideoId": "be6PLMKKSto",
+            "duration": 362,
+            "notes": "Partitioning splits data across machines. The shard key decides whether that scales smoothly or creates one very hot node.\n\n## What this lesson covers\n\n- Choose a shard key that spreads load evenly\n\n- Compare range, hash, and directory partitioning\n\n- Plan for resharding before you need it\n\nThis lesson sits in Data at Scale, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.system-design-foundations-replication",
+            "title": "Replication and read scaling",
+            "slug": "system-design-foundations-replication",
+            "youtubeVideoId": "bI8Ry6GhMSE",
+            "duration": 302,
+            "notes": "Replicas give you read capacity and failover. They also give you a window where a follower answers with data that is slightly out of date.\n\n## What this lesson covers\n\n- Distinguish synchronous from asynchronous replication\n\n- Route reads to replicas without breaking read-your-writes\n\n- Plan and rehearse failover\n\nThis lesson sits in Data at Scale, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.system-design-foundations-consistency-and-cap",
+            "title": "Consistency models and CAP",
+            "slug": "system-design-foundations-consistency-and-cap",
+            "youtubeVideoId": "gkg-FAEXIkY",
+            "duration": 408,
+            "notes": "When the network partitions you choose consistency or availability. Most real systems pick a different answer per operation.\n\n## What this lesson covers\n\n- Place a system on the consistency spectrum\n\n- Choose guarantees per operation, not per database\n\n- Explain the user-visible effect of eventual consistency\n\nThis lesson sits in Data at Scale, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.system-design-foundations-3",
+        "title": "API Design at Scale",
+        "summary": "The contract other systems depend on, and how it behaves when they misbehave.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.system-design-foundations-rest-vs-graphql",
+            "title": "REST and GraphQL trade-offs",
+            "slug": "system-design-foundations-rest-vs-graphql",
+            "youtubeVideoId": "yWzKJPw_VzM",
+            "duration": 315,
+            "notes": "REST gives you cacheable, predictable endpoints; GraphQL gives clients exactly the data they asked for. The trade is caching and complexity.\n\n## What this lesson covers\n\n- Compare fixed endpoints against flexible queries\n\n- Weigh caching behaviour on each side\n\n- Version an API without breaking existing clients\n\nThis lesson sits in API Design at Scale, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.system-design-foundations-rate-limiting",
+            "title": "Rate limiting",
+            "slug": "system-design-foundations-rate-limiting",
+            "youtubeVideoId": "YXkOdWBwqaA",
+            "duration": 466,
+            "notes": "Rate limiting protects you from clients and clients from themselves. Token bucket is the usual answer; the hard part is the key you limit on.\n\n## What this lesson covers\n\n- Implement token bucket and sliding window limits\n\n- Choose the right key: user, tenant, or IP\n\n- Return limits and retry hints in the response\n\nThis lesson sits in API Design at Scale, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.system-design-foundations-idempotency-and-retries",
+            "title": "Idempotency and safe retries",
+            "slug": "system-design-foundations-idempotency-and-retries",
+            "youtubeVideoId": "t99NvIazD68",
+            "duration": 451,
+            "notes": "Any request can be delivered twice. An idempotency key lets the second delivery return the first result instead of charging the card again.\n\n## What this lesson covers\n\n- Make write endpoints safe to retry\n\n- Accept and store idempotency keys\n\n- Retry with backoff and jitter, not in lockstep\n\nThis lesson sits in API Design at Scale, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.system-design-foundations-4",
+        "title": "Reliability and Operations",
+        "summary": "Knowing what your system is doing, and what it does when a dependency stops answering.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.system-design-foundations-observability",
+            "title": "Observability: logs, metrics, traces",
+            "slug": "system-design-foundations-observability",
+            "youtubeVideoId": "aJpzr8648XE",
+            "duration": 489,
+            "notes": "Metrics tell you something is wrong, traces tell you where, logs tell you why. You need all three, and they need to share request ids.\n\n## What this lesson covers\n\n- Instrument the three signals and correlate them\n\n- Alert on symptoms users feel, not on causes\n\n- Trace a request across service boundaries\n\nThis lesson sits in Reliability and Operations, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.system-design-foundations-failure-modes-and-timeouts",
+            "title": "Timeouts, retries, and circuit breakers",
+            "slug": "system-design-foundations-failure-modes-and-timeouts",
+            "youtubeVideoId": "nzeKH7moGfo",
+            "duration": 254,
+            "notes": "A dependency that hangs is worse than one that fails. Timeouts convert hanging into failing, and circuit breakers stop failure spreading.\n\n## What this lesson covers\n\n- Set timeouts on every outbound call\n\n- Break the circuit when a dependency is clearly down\n\n- Degrade gracefully instead of cascading\n\nThis lesson sits in Reliability and Operations, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.system-design-foundations-capacity-estimation",
+            "title": "Capacity estimation",
+            "slug": "system-design-foundations-capacity-estimation",
+            "youtubeVideoId": "UC5xf8FbdJc",
+            "duration": 512,
+            "notes": "Rough arithmetic on requests, payload sizes, and growth turns opinions into a design you can defend in a review.\n\n## What this lesson covers\n\n- Estimate throughput, storage, and bandwidth\n\n- Size for peak, not for average\n\n- Sanity check a design against the numbers\n\nThis lesson sits in Reliability and Operations, part of System Design Foundations. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.postgresql-for-developers",
+    "title": "PostgreSQL for Developers",
+    "slug": "postgresql-for-developers",
+    "summary": "SQL you will actually write, schemas that hold up, indexes that get used, and the operational basics behind them.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-postgresql-for-developers/1600/900",
+    "level": "intermediate",
+    "modules": [
+      {
+        "id": "module.postgresql-for-developers-1",
+        "title": "SQL Essentials",
+        "summary": "The query constructs that cover the overwhelming majority of real application SQL.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.postgresql-for-developers-select-and-joins",
+            "title": "SELECT and joins",
+            "slug": "postgresql-for-developers-select-and-joins",
+            "youtubeVideoId": "G3lJAxg1cy8",
+            "duration": 304,
+            "notes": "Joins combine rows across tables, and the join type decides what happens to the rows with no match. Most wrong result sets are a join type mistake.\n\n## What this lesson covers\n\n- Choose between inner, left, right, and full joins\n\n- Join on the right keys and avoid accidental fan-out\n\n- Filter in WHERE versus in the join condition\n\nThis lesson sits in SQL Essentials, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.postgresql-for-developers-aggregates-and-grouping",
+            "title": "Aggregates and GROUP BY",
+            "slug": "postgresql-for-developers-aggregates-and-grouping",
+            "youtubeVideoId": "nNrgRVIzeHg",
+            "duration": 360,
+            "notes": "Aggregation collapses rows into summaries. WHERE filters before grouping and HAVING after — mixing them up is the classic bug.\n\n## What this lesson covers\n\n- Aggregate with count, sum, avg, min, and max\n\n- Group correctly and know what must be in GROUP BY\n\n- Filter groups with HAVING, rows with WHERE\n\nThis lesson sits in SQL Essentials, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.postgresql-for-developers-ctes-and-window-functions",
+            "title": "CTEs and window functions",
+            "slug": "postgresql-for-developers-ctes-and-window-functions",
+            "youtubeVideoId": "rIcB4zMYMas",
+            "duration": 472,
+            "notes": "CTEs make a long query readable; window functions compute across related rows without collapsing them. Running totals and rankings stop being hard.\n\n## What this lesson covers\n\n- Break a complex query into named CTEs\n\n- Rank and number rows within partitions\n\n- Compute running totals and row-to-row differences\n\nThis lesson sits in SQL Essentials, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.postgresql-for-developers-2",
+        "title": "Schema Design",
+        "summary": "Modelling data so the database enforces your rules instead of hoping the application does.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.postgresql-for-developers-normalization",
+            "title": "Normalisation and when to break it",
+            "slug": "postgresql-for-developers-normalization",
+            "youtubeVideoId": "FzVCGou8SMA",
+            "duration": 213,
+            "notes": "Normalising removes duplicated truth. Denormalising trades that safety for read speed, and should be a decision rather than an accident.\n\n## What this lesson covers\n\n- Remove duplicated data and update anomalies\n\n- Recognise when denormalisation is justified\n\n- Model many-to-many relationships properly\n\nThis lesson sits in Schema Design, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.postgresql-for-developers-constraints-and-keys",
+            "title": "Constraints, keys, and integrity",
+            "slug": "postgresql-for-developers-constraints-and-keys",
+            "youtubeVideoId": "5kiMg7GXAsY",
+            "duration": 233,
+            "notes": "Constraints are guarantees the database keeps even when a buggy deploy does not. Foreign keys, uniqueness, and checks belong in the schema.\n\n## What this lesson covers\n\n- Enforce relationships with foreign keys\n\n- Use unique and check constraints as invariants\n\n- Choose delete behaviour deliberately\n\nThis lesson sits in Schema Design, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.postgresql-for-developers-data-types-and-jsonb",
+            "title": "Data types and JSONB",
+            "slug": "postgresql-for-developers-data-types-and-jsonb",
+            "youtubeVideoId": "PZFiThbuTFg",
+            "duration": 754,
+            "notes": "Postgres has rich types, and JSONB for the genuinely unstructured remainder. Reaching for JSONB too early throws away every guarantee above.\n\n## What this lesson covers\n\n- Pick precise types for time, money, and identifiers\n\n- Use JSONB for genuinely variable data only\n\n- Index inside a JSONB column when you must query it\n\nThis lesson sits in Schema Design, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.postgresql-for-developers-3",
+        "title": "Query Performance",
+        "summary": "Finding the slow query, understanding why it is slow, and fixing the actual cause.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.postgresql-for-developers-indexes",
+            "title": "How indexes work",
+            "slug": "postgresql-for-developers-indexes",
+            "youtubeVideoId": "NI9wYuVIYcA",
+            "duration": 273,
+            "notes": "An index is a sorted structure the planner may choose to use. Column order in a composite index decides which queries it can serve.\n\n## What this lesson covers\n\n- Understand B-tree indexes and column order\n\n- Add partial and expression indexes where they fit\n\n- Weigh the write cost of every index you add\n\nThis lesson sits in Query Performance, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.postgresql-for-developers-explain-analyze",
+            "title": "Reading EXPLAIN ANALYZE",
+            "slug": "postgresql-for-developers-explain-analyze",
+            "youtubeVideoId": "P7EUFtjeAmI",
+            "duration": 617,
+            "notes": "The plan tells you what the database did and what it expected. A large gap between estimated and actual rows is usually the real problem.\n\n## What this lesson covers\n\n- Read a plan from the innermost node outwards\n\n- Spot sequential scans that should be index scans\n\n- Compare estimated against actual row counts\n\nThis lesson sits in Query Performance, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.postgresql-for-developers-query-tuning",
+            "title": "Tuning a slow query",
+            "slug": "postgresql-for-developers-query-tuning",
+            "youtubeVideoId": "YON9PliOYFk",
+            "duration": 492,
+            "notes": "Rewriting is often better than indexing. Remove the function on the indexed column, cut the rows early, and check the plan again.\n\n## What this lesson covers\n\n- Rewrite predicates so an index can be used\n\n- Reduce the row count as early as possible\n\n- Verify the improvement with a fresh plan\n\nThis lesson sits in Query Performance, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.postgresql-for-developers-4",
+        "title": "Operating Postgres",
+        "summary": "Transactions, schema change, and the operational habits that keep production boring.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.postgresql-for-developers-transactions-and-isolation",
+            "title": "Transactions and isolation levels",
+            "slug": "postgresql-for-developers-transactions-and-isolation",
+            "youtubeVideoId": "G8wDjV0N9tk",
+            "duration": 498,
+            "notes": "Isolation decides which concurrency anomalies you can still see. Read committed is the default, and it permits more than most people assume.\n\n## What this lesson covers\n\n- Keep transactions short and correctly scoped\n\n- Compare read committed, repeatable read, and serializable\n\n- Avoid deadlocks by ordering access consistently\n\nThis lesson sits in Operating Postgres, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.postgresql-for-developers-migrations",
+            "title": "Schema migrations without downtime",
+            "slug": "postgresql-for-developers-migrations",
+            "youtubeVideoId": "mr_J5v398Qo",
+            "duration": 1893,
+            "notes": "A migration runs against a live application. Expand, migrate, contract lets you change a schema while both old and new code are running.\n\n## What this lesson covers\n\n- Apply the expand, migrate, contract pattern\n\n- Avoid locks that block writes on large tables\n\n- Make every migration reversible or forward-only on purpose\n\nThis lesson sits in Operating Postgres, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.postgresql-for-developers-backups-and-pooling",
+            "title": "Backups and connection pooling",
+            "slug": "postgresql-for-developers-backups-and-pooling",
+            "youtubeVideoId": "9IcyoLxRAYY",
+            "duration": 1872,
+            "notes": "A backup you have never restored is a hypothesis. A pooler is what stops a few hundred idle app connections from exhausting the server.\n\n## What this lesson covers\n\n- Take backups and rehearse a restore\n\n- Understand point-in-time recovery\n\n- Pool connections in front of the database\n\nThis lesson sits in Operating Postgres, part of PostgreSQL for Developers. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.devops-with-docker-and-kubernetes",
+    "title": "DevOps with Docker and Kubernetes",
+    "slug": "devops-with-docker-and-kubernetes",
+    "summary": "Containerise an application, run it on Kubernetes, ship it through a pipeline, and operate it once it is live.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-devops-with-docker-and-kubernetes/1600/900",
+    "level": "advanced",
+    "modules": [
+      {
+        "id": "module.devops-with-docker-and-kubernetes-1",
+        "title": "Containers and Images",
+        "summary": "What a container actually is, and how to build images that are small, fast, and reproducible.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-docker-images-and-dockerfiles",
+            "title": "Images, containers, and Dockerfiles",
+            "slug": "devops-with-docker-and-kubernetes-docker-images-and-dockerfiles",
+            "youtubeVideoId": "SnSH8Ht3MIc",
+            "duration": 1100,
+            "notes": "An image is a stacked filesystem plus metadata; a container is a running instance of one. Every Dockerfile instruction is a layer.\n\n## What this lesson covers\n\n- Distinguish an image from a running container\n\n- Write a Dockerfile that builds reproducibly\n\n- Choose a base image deliberately\n\nThis lesson sits in Containers and Images, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-layers-and-build-cache",
+            "title": "Layers, caching, and multi-stage builds",
+            "slug": "devops-with-docker-and-kubernetes-layers-and-build-cache",
+            "youtubeVideoId": "_Q9KSFUZH0c",
+            "duration": 391,
+            "notes": "Instruction order decides your build time. Copy dependency manifests before source, and use a multi-stage build to leave the toolchain behind.\n\n## What this lesson covers\n\n- Order instructions so the cache survives code changes\n\n- Separate build and runtime with multi-stage builds\n\n- Cut image size and shrink the attack surface\n\nThis lesson sits in Containers and Images, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-docker-compose",
+            "title": "Local stacks with Compose",
+            "slug": "devops-with-docker-and-kubernetes-docker-compose",
+            "youtubeVideoId": "iTL3Edxzgug",
+            "duration": 194,
+            "notes": "Compose runs your app together with its database and cache, with one file describing the whole local environment.\n\n## What this lesson covers\n\n- Define multi-service stacks in one file\n\n- Wire up networks, volumes, and environment variables\n\n- Keep local configuration close to production\n\nThis lesson sits in Containers and Images, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.devops-with-docker-and-kubernetes-2",
+        "title": "Kubernetes Core Objects",
+        "summary": "The handful of objects you need before any of the rest of Kubernetes makes sense.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-pods-and-deployments",
+            "title": "Pods, ReplicaSets, and Deployments",
+            "slug": "devops-with-docker-and-kubernetes-pods-and-deployments",
+            "youtubeVideoId": "TlHvYWVUZyc",
+            "duration": 388,
+            "notes": "You declare a desired state and the controller works towards it. A Deployment is how you express \"n copies of this, updated this way\".\n\n## What this lesson covers\n\n- Read the pod, ReplicaSet, and Deployment relationship\n\n- Declare desired state and let controllers converge\n\n- Configure readiness and liveness probes\n\nThis lesson sits in Kubernetes Core Objects, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-services-and-ingress",
+            "title": "Services and ingress",
+            "slug": "devops-with-docker-and-kubernetes-services-and-ingress",
+            "youtubeVideoId": "NPFbYpb0I7w",
+            "duration": 341,
+            "notes": "Pods come and go, so Services give them a stable address. Ingress is what puts an HTTP route in front of that.\n\n## What this lesson covers\n\n- Expose pods with a stable service address\n\n- Compare ClusterIP, NodePort, and LoadBalancer\n\n- Route external HTTP traffic with ingress rules\n\nThis lesson sits in Kubernetes Core Objects, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-configmaps-and-secrets",
+            "title": "ConfigMaps and Secrets",
+            "slug": "devops-with-docker-and-kubernetes-configmaps-and-secrets",
+            "youtubeVideoId": "FAnQTgr04mU",
+            "duration": 1014,
+            "notes": "Configuration belongs outside the image. Secrets look like ConfigMaps but need encryption at rest and tighter access control.\n\n## What this lesson covers\n\n- Inject configuration as environment variables or files\n\n- Keep secrets out of images and manifests\n\n- Roll configuration changes without rebuilding\n\nThis lesson sits in Kubernetes Core Objects, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.devops-with-docker-and-kubernetes-3",
+        "title": "Continuous Delivery",
+        "summary": "The automated path from a merged commit to running code, including the way back.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-ci-cd-pipelines",
+            "title": "Building a CI/CD pipeline",
+            "slug": "devops-with-docker-and-kubernetes-ci-cd-pipelines",
+            "youtubeVideoId": "YLtlz88zrLg",
+            "duration": 373,
+            "notes": "A pipeline runs the same steps every time: test, build, push, deploy. Its value is the consistency, not the automation.\n\n## What this lesson covers\n\n- Structure test, build, and deploy stages\n\n- Cache dependencies to keep pipelines quick\n\n- Gate deploys on checks that genuinely matter\n\nThis lesson sits in Continuous Delivery, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-rolling-deploys-and-rollbacks",
+            "title": "Rolling deploys and rollbacks",
+            "slug": "devops-with-docker-and-kubernetes-rolling-deploys-and-rollbacks",
+            "youtubeVideoId": "wWA9JgAvuqw",
+            "duration": 524,
+            "notes": "A rolling update replaces pods gradually so there is no downtime. The important half is being able to reverse it in seconds.\n\n## What this lesson covers\n\n- Configure a rolling update and its surge settings\n\n- Compare rolling, blue-green, and canary strategies\n\n- Roll back quickly and predictably\n\nThis lesson sits in Continuous Delivery, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-helm",
+            "title": "Packaging with Helm",
+            "slug": "devops-with-docker-and-kubernetes-helm",
+            "youtubeVideoId": "jUYNS90nq8U",
+            "duration": 1346,
+            "notes": "Helm templates your manifests so one chart serves staging and production with different values, instead of four near-identical YAML directories.\n\n## What this lesson covers\n\n- Template manifests and separate values per environment\n\n- Install, upgrade, and roll back a release\n\n- Manage chart dependencies\n\nThis lesson sits in Continuous Delivery, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.devops-with-docker-and-kubernetes-4",
+        "title": "Operating a Cluster",
+        "summary": "Life after the first deploy: visibility, scaling, and debugging what is actually running.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-monitoring-and-logs",
+            "title": "Monitoring and logs",
+            "slug": "devops-with-docker-and-kubernetes-monitoring-and-logs",
+            "youtubeVideoId": "gBdyIv9d_O8",
+            "duration": 1908,
+            "notes": "Container logs vanish with the container. Ship them somewhere, scrape metrics, and alert on what users would notice.\n\n## What this lesson covers\n\n- Aggregate logs off ephemeral pods\n\n- Scrape and dashboard cluster and app metrics\n\n- Alert on user-visible symptoms\n\nThis lesson sits in Operating a Cluster, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-autoscaling",
+            "title": "Autoscaling workloads",
+            "slug": "devops-with-docker-and-kubernetes-autoscaling",
+            "youtubeVideoId": "dRC-5Z2p7Ns",
+            "duration": 1685,
+            "notes": "Horizontal autoscaling adds pods when a metric crosses a threshold. It only works if requests are set and your app starts quickly.\n\n## What this lesson covers\n\n- Scale pods on CPU or custom metrics\n\n- Tune thresholds to avoid flapping\n\n- Combine pod autoscaling with cluster autoscaling\n\nThis lesson sits in Operating a Cluster, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.devops-with-docker-and-kubernetes-resource-limits-and-troubleshooting",
+            "title": "Resource limits and troubleshooting",
+            "slug": "devops-with-docker-and-kubernetes-resource-limits-and-troubleshooting",
+            "youtubeVideoId": "JLw_pHLCN4Y",
+            "duration": 308,
+            "notes": "Requests drive scheduling, limits drive eviction. CrashLoopBackOff and OOMKilled are usually a limits conversation, not a code one.\n\n## What this lesson covers\n\n- Set requests and limits that reflect real usage\n\n- Diagnose CrashLoopBackOff and OOMKilled pods\n\n- Debug a pod with logs, describe, and exec\n\nThis lesson sits in Operating a Cluster, part of DevOps with Docker and Kubernetes. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course.practical-web-security",
+    "title": "Practical Web Security",
+    "slug": "practical-web-security",
+    "summary": "The vulnerabilities that actually show up in web applications, how they are exploited, and how to close them for good.",
+    "coverImageUrl": "https://picsum.photos/seed/vertex-practical-web-security/1600/900",
+    "level": "intermediate",
+    "modules": [
+      {
+        "id": "module.practical-web-security-1",
+        "title": "Thinking About Threats",
+        "summary": "Before any specific vulnerability: who is attacking, what they want, and what secure defaults look like.",
+        "position": 1,
+        "lessons": [
+          {
+            "id": "lesson.practical-web-security-owasp-top-ten",
+            "title": "The OWASP Top 10, practically",
+            "slug": "practical-web-security-owasp-top-ten",
+            "youtubeVideoId": "wUaeKEl1RCw",
+            "duration": 898,
+            "notes": "The Top 10 is a map of where things actually go wrong. Reading it as categories rather than a checklist is what makes it useful.\n\n## What this lesson covers\n\n- Recognise each category in real application code\n\n- Prioritise by exploitability and impact\n\n- Use it as a review lens rather than a checklist\n\nThis lesson sits in Thinking About Threats, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.practical-web-security-authentication-vs-authorization",
+            "title": "Authentication versus authorization",
+            "slug": "practical-web-security-authentication-vs-authorization",
+            "youtubeVideoId": "7ijBiXddB7w",
+            "duration": 221,
+            "notes": "Authentication is who you are; authorization is what you may do. Broken access control is consistently the most common serious finding.\n\n## What this lesson covers\n\n- Separate identity from permission checks\n\n- Enforce authorization on the server, every time\n\n- Catch insecure direct object references\n\nThis lesson sits in Thinking About Threats, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.practical-web-security-secure-defaults",
+            "title": "Secure defaults and least privilege",
+            "slug": "practical-web-security-secure-defaults",
+            "youtubeVideoId": "130ioey4isw",
+            "duration": 296,
+            "notes": "Most breaches exploit something that was left open rather than something clever. Default deny, then grant the narrow thing that is needed.\n\n## What this lesson covers\n\n- Default to deny and grant explicitly\n\n- Scope credentials to the minimum they need\n\n- Reduce attack surface by removing unused paths\n\nThis lesson sits in Thinking About Threats, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.practical-web-security-2",
+        "title": "Common Web Vulnerabilities",
+        "summary": "The three classic classes, how each is exploited, and the defence that genuinely works.",
+        "position": 2,
+        "lessons": [
+          {
+            "id": "lesson.practical-web-security-cross-site-scripting",
+            "title": "Cross-site scripting (XSS)",
+            "slug": "practical-web-security-cross-site-scripting",
+            "youtubeVideoId": "pD6C1-zSxIM",
+            "duration": 1112,
+            "notes": "XSS is attacker-controlled content executing as script in your page. Contextual output encoding is the fix; blocklists are not.\n\n## What this lesson covers\n\n- Tell stored, reflected, and DOM-based XSS apart\n\n- Encode output for the context it lands in\n\n- Constrain script sources with a content security policy\n\nThis lesson sits in Common Web Vulnerabilities, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.practical-web-security-sql-injection",
+            "title": "SQL injection",
+            "slug": "practical-web-security-sql-injection",
+            "youtubeVideoId": "AOXMDbc11AE",
+            "duration": 254,
+            "notes": "Injection happens when data becomes part of the query. Parameterised queries keep the two separate, and they are not optional.\n\n## What this lesson covers\n\n- See how concatenated input changes a query\n\n- Use parameterised queries everywhere\n\n- Limit database privileges to contain the damage\n\nThis lesson sits in Common Web Vulnerabilities, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.practical-web-security-csrf",
+            "title": "Cross-site request forgery",
+            "slug": "practical-web-security-csrf",
+            "youtubeVideoId": "80S8h5hEwTY",
+            "duration": 597,
+            "notes": "CSRF makes a logged-in user’s browser send a request they never intended. SameSite cookies and anti-forgery tokens close it.\n\n## What this lesson covers\n\n- Understand how an ambient credential is abused\n\n- Set SameSite cookie attributes correctly\n\n- Validate anti-forgery tokens on state-changing requests\n\nThis lesson sits in Common Web Vulnerabilities, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.practical-web-security-3",
+        "title": "Authentication Done Right",
+        "summary": "Identity handled properly: session strategy, credential storage, and additional factors.",
+        "position": 3,
+        "lessons": [
+          {
+            "id": "lesson.practical-web-security-sessions-vs-jwt",
+            "title": "Sessions versus JWTs",
+            "slug": "practical-web-security-sessions-vs-jwt",
+            "youtubeVideoId": "z9-_YQWxwJ4",
+            "duration": 492,
+            "notes": "Server sessions are revocable; JWTs are stateless and awkward to revoke. Pick based on whether you need to log someone out immediately.\n\n## What this lesson covers\n\n- Compare revocability and statelessness honestly\n\n- Store tokens in cookies with the right flags\n\n- Design refresh and logout before you ship\n\nThis lesson sits in Authentication Done Right, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.practical-web-security-password-storage",
+            "title": "Password storage and hashing",
+            "slug": "practical-web-security-password-storage",
+            "youtubeVideoId": "qgpsIBLvrGY",
+            "duration": 616,
+            "notes": "Passwords are hashed with a slow, salted algorithm designed for the job. Anything faster is a favour to whoever steals the table.\n\n## What this lesson covers\n\n- Use a slow, salted hash such as argon2 or bcrypt\n\n- Tune work factors as hardware improves\n\n- Handle reset flows without leaking account existence\n\nThis lesson sits in Authentication Done Right, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.practical-web-security-mfa-and-oauth",
+            "title": "MFA and delegated authentication",
+            "slug": "practical-web-security-mfa-and-oauth",
+            "youtubeVideoId": "ZV5yTm4pT8g",
+            "duration": 272,
+            "notes": "A second factor defeats stolen passwords. OAuth and OIDC hand identity to a provider — useful, and only if you validate what comes back.\n\n## What this lesson covers\n\n- Add a second factor without wrecking usability\n\n- Distinguish OAuth authorization from OIDC identity\n\n- Validate tokens and claims on every request\n\nThis lesson sits in Authentication Done Right, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "module.practical-web-security-4",
+        "title": "Hardening and Supply Chain",
+        "summary": "The layer around your application: transport, headers, secrets, and the code you did not write.",
+        "position": 4,
+        "lessons": [
+          {
+            "id": "lesson.practical-web-security-https-headers-and-csp",
+            "title": "HTTPS, security headers, and CSP",
+            "slug": "practical-web-security-https-headers-and-csp",
+            "youtubeVideoId": "4bQeGUzHpOE",
+            "duration": 486,
+            "notes": "A handful of response headers remove entire attack classes. CSP is the strongest and the fiddliest, so roll it out in report-only first.\n\n## What this lesson covers\n\n- Enforce HTTPS and enable HSTS\n\n- Set the headers that block framing and sniffing\n\n- Introduce a content security policy incrementally\n\nThis lesson sits in Hardening and Supply Chain, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 1
+          },
+          {
+            "id": "lesson.practical-web-security-secrets-management",
+            "title": "Secrets management",
+            "slug": "practical-web-security-secrets-management",
+            "youtubeVideoId": "FQE_gyEwu0Q",
+            "duration": 1125,
+            "notes": "Secrets belong in a manager, injected at runtime, never in the repository. Assume anything committed once is compromised forever.\n\n## What this lesson covers\n\n- Keep credentials out of source control\n\n- Inject secrets at runtime and scope them tightly\n\n- Rotate credentials and revoke exposed ones immediately\n\nThis lesson sits in Hardening and Supply Chain, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 2
+          },
+          {
+            "id": "lesson.practical-web-security-dependency-and-supply-chain",
+            "title": "Dependency and supply chain risk",
+            "slug": "practical-web-security-dependency-and-supply-chain",
+            "youtubeVideoId": "njm1nZlrR68",
+            "duration": 824,
+            "notes": "Most of your production code came from someone else. Lockfiles, audits, and update discipline are what keep that manageable.\n\n## What this lesson covers\n\n- Pin dependencies with a committed lockfile\n\n- Audit for known vulnerabilities continuously\n\n- Review what a new dependency actually pulls in\n\nThis lesson sits in Hardening and Supply Chain, part of Practical Web Security. It assumes what came before it and leads directly into the next lesson in the module.",
+            "position": 3
+          }
+        ]
+      }
+    ]
+  }
+]

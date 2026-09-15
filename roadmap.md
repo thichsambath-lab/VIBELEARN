@@ -34,13 +34,13 @@ This roadmap defines the strict order of implementation for the Vibelearn projec
 ## Phase 3: Backend & Database
 **Goal:** Create the database schema, seed data, and expose the APIs.
 
-- [ ] 3.1: Setup Supabase connection in the `backend`.
-- [ ] 3.2: Configure Drizzle ORM and define the schema (`users`, `courses`, `modules`, `lessons`, `progress`).
-- [ ] 3.3: Generate and run the initial database migration.
-- [ ] 3.4: Write and execute a seeding script to parse `docs/seed.ndjson` and `docs/videos.json` into the database.
-- [ ] 3.5: Create read-only public endpoints (`GET /api/courses`, `GET /api/courses/:slug`, `GET /api/lessons/:slug`).
-- [ ] 3.6: Create protected endpoints (`GET /api/progress`, `POST /api/progress`).
-- [ ] 3.7: **CHECKPOINT:** Verify APIs return the correct seeded data and progress data via curl/Postman.
+- [x] 3.1: Setup Supabase connection in the `backend`.
+- [x] 3.2: Configure Drizzle ORM and define the schema (`users`, `courses`, `modules`, `lessons`, `progress`).
+- [x] 3.3: Generate and run the initial database migration.
+- [x] 3.4: Write and execute a seeding script to parse `docs/seed.ndjson` and `docs/videos.json` into the database.
+- [x] 3.5: Create read-only public endpoints (`GET /api/courses`, `GET /api/courses/:slug`, `GET /api/lessons/:slug`).
+- [x] 3.6: Create protected endpoints (`GET /api/progress`, `POST /api/progress`).
+- [x] 3.7: **CHECKPOINT:** Verify APIs return the correct seeded data and progress data via curl/Postman.
 
 ## Phase 4: Integration (Auth & Data Hookup)
 **Goal:** Secure the application and connect the frontend to the real backend APIs.

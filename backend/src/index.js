@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import { config } from './config/index.js';
 import { errorHandler, notFoundHandler } from './middlewares/errorHandler.js';
+import courseRoutes from './routes/course.routes.js';
+import lessonRoutes from './routes/lesson.routes.js';
+import progressRoutes from './routes/progress.routes.js';
 
 const app = express();
 
@@ -22,6 +25,11 @@ app.get('/api/health', (_req, res) => {
     environment: config.nodeEnv,
   });
 });
+
+// API route mounts
+app.use('/api/courses', courseRoutes);
+app.use('/api/lessons', lessonRoutes);
+app.use('/api/progress', progressRoutes);
 
 // 404 handler
 app.use(notFoundHandler);
