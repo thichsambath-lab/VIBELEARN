@@ -20,16 +20,16 @@ This roadmap defines the strict order of implementation for the Vibelearn projec
 ## Phase 2: Frontend First (UI & Layouts)
 **Goal:** Build the complete UI using mock data before touching the backend.
 
-- [ ] 2.1: Draft and finalize `docs/system_design/DESIGN.md` to establish UI consistency guidelines.
-- [ ] 2.2: Implement the global design system (typography, colors) in Tailwind.
-- [ ] 2.3: Integrate Clerk React SDK into the `frontend` for Sign Up / Log In UI.
-- [ ] 2.4: Protect specific frontend routes (e.g., `/my-learning`) using Clerk components.
-- [ ] 2.5: Build the Public Catalog Page (using mock course data).
-- [ ] 2.6: Build the Course Detail Page (using mock module/lesson data).
-- [ ] 2.7: Build the Lesson Page UI (YouTube embed, curriculum sidebar, text notes).
-- [ ] 2.8: Build the "My Learning" Dashboard (using mock progress data).
-- [ ] 2.9: Ensure mobile responsiveness across all pages.
-- [ ] 2.10: **CHECKPOINT:** Perform a full UI audit against the provided reference images and verify auth flows.
+- [x] 2.1: Draft and finalize `docs/system_design/DESIGN.md` to establish UI consistency guidelines.
+- [x] 2.2: Implement the global design system (typography, colors) in Tailwind.
+- [x] 2.3: Integrate Clerk React SDK into the `frontend` for Sign Up / Log In UI.
+- [x] 2.4: Protect specific frontend routes (e.g., `/my-learning`) using Clerk components.
+- [x] 2.5: Build the Public Catalog Page (using mock course data).
+- [x] 2.6: Build the Course Detail Page (using mock module/lesson data).
+- [x] 2.7: Build the Lesson Page UI (YouTube embed, curriculum sidebar, text notes).
+- [x] 2.8: Build the "My Learning" Dashboard (using mock progress data).
+- [x] 2.9: Ensure mobile responsiveness across all pages.
+- [x] 2.10: **CHECKPOINT:** Perform a full UI audit against the provided reference images and verify auth flows.
 
 ## Phase 3: Backend & Database
 **Goal:** Create the database schema, seed data, and expose the APIs.

@@ -1,17 +1,47 @@
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { ClerkProvider } from '@clerk/clerk-react';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Catalog from './pages/Catalog';
+import CourseDetail from './pages/CourseDetail';
+import Lesson from './pages/Lesson';
+import MyLearning from './pages/MyLearning';
+
+// Fallback dummy key to prevent Clerk crash if user hasn't configured .env yet
+const clerkPublishableKey =
+  import.meta.env.VITE_CLERK_PUBLISHABLE_KEY?.startsWith('pk_') &&
+  !import.meta.env.VITE_CLERK_PUBLISHABLE_KEY.includes('example')
+    ? import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+    : 'pk_test_ZXhhbXBsZS5jbGVyay5hY2NvdW50cy5kZXYk';
+
+function AppLayout() {
+  const location = useLocation();
+  const isLessonPage = location.pathname.includes('/lessons/');
+
+  return (
+    <div className="flex flex-col min-h-screen bg-[#FAFAFC] text-slate-900 font-sans">
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Catalog />} />
+          <Route path="/courses" element={<Catalog />} />
+          <Route path="/courses/:slug" element={<CourseDetail />} />
+          <Route path="/courses/:slug/lessons/:lessonSlug" element={<Lesson />} />
+          <Route path="/my-learning" element={<MyLearning />} />
+        </Routes>
+      </main>
+      {/* Do not render standard footer on Lesson page to keep view clean for sticky bottom bar */}
+      {!isLessonPage && <Footer />}
+    </div>
+  );
+}
+
 export default function App() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-slate-950 text-slate-100">
-      <div className="max-w-md w-full rounded-2xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl backdrop-blur">
-        <h1 className="text-2xl font-bold tracking-tight text-white mb-2">
-          Vibelearn
-        </h1>
-        <p className="text-sm text-slate-400 mb-4">
-          Foundation initialized successfully with Vite, React, and Tailwind CSS.
-        </p>
-        <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 ring-1 ring-inset ring-emerald-500/20">
-          Phase 1 Ready
-        </span>
-      </div>
-    </main>
+    <ClerkProvider publishableKey={clerkPublishableKey}>
+      <Router>
+        <AppLayout />
+      </Router>
+    </ClerkProvider>
   );
 }
