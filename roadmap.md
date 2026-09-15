@@ -9,13 +9,13 @@ This roadmap defines the strict order of implementation for the Vibelearn projec
 ## Phase 1: Foundation (Repo Setup)
 **Goal:** Initialize the monorepo structure and establish the core technology stack.
 
-- [ ] 1.1: Initialize `frontend` folder with Vite (React, JavaScript).
-- [ ] 1.2: Initialize `backend` folder with Node.js (Express, JavaScript).
-- [ ] 1.3: Setup TailwindCSS in the `frontend`.
-- [ ] 1.4: Configure ESLint and Prettier across both workspaces.
-- [ ] 1.5: Create `.env.example` in both `frontend` and `backend` (stubs for Clerk, Supabase, API URLs).
-- [ ] 1.6: Verify both development servers start successfully (`npm run dev`).
-- [ ] 1.7: **CHECKPOINT:** Get user approval before moving to the frontend.
+- [x] 1.1: Initialize `frontend` folder with Vite (React, JavaScript).
+- [x] 1.2: Initialize `backend` folder with Node.js (Express, JavaScript).
+- [x] 1.3: Setup TailwindCSS in the `frontend`.
+- [x] 1.4: Configure ESLint and Prettier across both workspaces.
+- [x] 1.5: Create `.env.example` in both `frontend` and `backend` (stubs for Clerk, Supabase, API URLs).
+- [x] 1.6: Verify both development servers start successfully (`npm run dev`).
+- [x] 1.7: **CHECKPOINT:** Get user approval before moving to the frontend.
 
 ## Phase 2: Frontend First (UI & Layouts)
 **Goal:** Build the complete UI using mock data before touching the backend.
