@@ -53,8 +53,8 @@ This roadmap defines the strict order of implementation for the Vibelearn projec
 ## Phase 5: Deployment
 **Goal:** Deploy the application to production.
 
-- [ ] 5.1: Run linting on both frontend and backend.
-- [ ] 5.2: Prepare deployment configurations for Vercel (Frontend).
-- [ ] 5.3: Prepare deployment configurations for Render (Backend).
-- [ ] 5.4: Deploy and verify production environment variables.
-- [ ] 5.5: **CHECKPOINT:** Project is live and fully functional.
+- [x] 5.1: Run linting on both frontend and backend.
+- [x] 5.2: Prepare deployment configurations for Vercel (Frontend).
+- [x] 5.3: Prepare deployment configurations for Render (Backend).
+- [x] 5.4: Deploy and verify production environment variables.
+- [x] 5.5: **CHECKPOINT:** Project is live and fully functional.
