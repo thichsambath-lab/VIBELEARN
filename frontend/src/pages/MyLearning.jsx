@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -13,10 +14,45 @@ import {
   SignInButton,
 } from '@clerk/clerk-react';
 import { MOCK_COURSES } from '../services/mockData';
+import { fetchCourses } from '../services/api';
+import { useProgress } from '../hooks/useProgress';
 import ProgressBar from '../components/common/ProgressBar';
 
 export default function MyLearning() {
-  const inProgressCourses = MOCK_COURSES.filter((c) => (c.progress || 0) > 0);
+  const [courses, setCourses] = useState(MOCK_COURSES);
+  const { getCourseStats } = useProgress();
+
+  useEffect(() => {
+    let isMounted = true;
+    async function load() {
+      try {
+        const liveCourses = await fetchCourses();
+        if (isMounted && liveCourses && liveCourses.length > 0) {
+          setCourses(liveCourses);
+        }
+      } catch (err) {
+        console.warn('Using fallback courses for MyLearning:', err);
+      }
+    }
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Filter courses that have progress or default mock courses with progress
+  const coursesWithStats = courses.map((course) => {
+    const stats = getCourseStats(course);
+    const progressPercent = stats.percentage > 0 ? stats.percentage : course.progress || 0;
+    return {
+      ...course,
+      computedProgress: progressPercent,
+      completedCount: stats.completedCount,
+      totalCount: stats.totalCount || (course.modules?.flatMap((m) => m.lessons || []).length) || 12,
+    };
+  });
+
+  const inProgressCourses = coursesWithStats.filter((c) => c.computedProgress > 0);
 
   return (
     <div className="min-h-screen bg-[#FAFAFC] py-10 text-left">
@@ -42,9 +78,9 @@ export default function MyLearning() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {inProgressCourses.map((course) => {
                 const activeLesson =
-                  course.modules.find((m) => m.isActive)?.lessons[0]?.slug ||
-                  course.modules[0]?.lessons[0]?.slug ||
-                  'data-fetching-caching';
+                  course.modules?.find((m) => m.isActive)?.lessons?.[0]?.slug ||
+                  course.modules?.[0]?.lessons?.[0]?.slug ||
+                  'nextjs-app-router-in-depth-file-system-routing';
 
                 return (
                   <div
@@ -59,7 +95,7 @@ export default function MyLearning() {
                             : course.title.slice(0, 2)}
                         </div>
                         <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
-                          {course.progress}% Completed
+                          {course.computedProgress}% Completed
                         </span>
                       </div>
 
@@ -73,7 +109,7 @@ export default function MyLearning() {
                       </div>
 
                       <div className="space-y-1.5 pt-2">
-                        <ProgressBar value={course.progress} />
+                        <ProgressBar value={course.computedProgress} />
                       </div>
                     </div>
 
@@ -81,11 +117,11 @@ export default function MyLearning() {
                       <div className="flex items-center gap-3 text-xs text-slate-400 font-medium">
                         <span className="flex items-center gap-1">
                           <Clock className="w-3.5 h-3.5" />
-                          {course.duration}
+                          {course.duration || '2h 15m'}
                         </span>
                         <span className="flex items-center gap-1">
                           <BookOpen className="w-3.5 h-3.5" />
-                          {course.modulesCount || course.modules.length} modules
+                          {course.modulesCount || course.modules?.length || 4} modules
                         </span>
                       </div>
 

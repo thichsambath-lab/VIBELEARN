@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   Home,
@@ -23,6 +23,8 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { MOCK_COURSES } from '../services/mockData';
+import { fetchLessonBySlug, fetchCourseBySlug } from '../services/api';
+import { useProgress } from '../hooks/useProgress';
 import ProgressBar from '../components/common/ProgressBar';
 
 export default function Lesson() {
@@ -32,21 +34,45 @@ export default function Lesson() {
   const [activeTab, setActiveTab] = useState('content');
   const [bookmarked, setBookmarked] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
 
-  // Find course
-  const course =
-    MOCK_COURSES.find((c) => c.slug === slug) || MOCK_COURSES[0];
+  const { getLessonProgress, markAsCompleted, saveProgress, getCourseStats } = useProgress();
+
+  const [course, setCourse] = useState(
+    () => MOCK_COURSES.find((c) => c.slug === slug) || MOCK_COURSES[0]
+  );
+  const [liveLessonData, setLiveLessonData] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      try {
+        const [loadedCourse, loadedLesson] = await Promise.all([
+          fetchCourseBySlug(slug),
+          fetchLessonBySlug(lessonSlug),
+        ]);
+        if (isMounted) {
+          if (loadedCourse) setCourse(loadedCourse);
+          if (loadedLesson) setLiveLessonData(loadedLesson);
+        }
+      } catch (err) {
+        console.warn('Using fallback data for lesson:', err);
+      }
+    }
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, [slug, lessonSlug]);
 
   // Find current lesson and module
-  let currentModule = course.modules.find((m) =>
+  let currentModule = course.modules?.find((m) =>
     m.lessons?.some((l) => l.slug === lessonSlug)
   );
-  if (!currentModule) {
+  if (!currentModule && course.modules) {
     currentModule = course.modules.find((m) => m.isActive) || course.modules[0];
   }
 
-  const currentLesson =
+  const fallbackLesson =
     currentModule?.lessons?.find((l) => l.slug === lessonSlug) ||
     currentModule?.lessons?.[0] || {
       id: 'default-lesson',
@@ -82,6 +108,22 @@ export default function Lesson() {
         },
       ],
     };
+
+  const currentLesson = liveLessonData || fallbackLesson;
+  const currentProgress = getLessonProgress(currentLesson.id || currentLesson.slug);
+  const isCompleted = currentProgress.isCompleted;
+  const stats = getCourseStats(course);
+
+  // Periodically save simulated watch position
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const currentPos = currentProgress.resumeTimestamp || 0;
+      saveProgress(currentLesson.id || currentLesson.slug, {
+        resumeTimestamp: currentPos + 10,
+      });
+    }, 20000);
+    return () => clearInterval(timer);
+  }, [currentLesson, currentProgress.resumeTimestamp, saveProgress]);
 
   // Find all lessons sequentially for Next/Prev navigation
   const allLessons = course.modules.flatMap((m) =>
@@ -157,11 +199,11 @@ export default function Lesson() {
                   {course.title}
                 </h4>
                 <p className="text-xs text-slate-500">
-                  {course.progress || 35}% complete
+                  {stats.percentage}% complete
                 </p>
               </div>
             </div>
-            <ProgressBar value={course.progress || 35} />
+            <ProgressBar value={stats.percentage} />
           </div>
 
           {/* Module Selector Header */}
@@ -321,7 +363,7 @@ export default function Lesson() {
               <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setIsCompleted(!isCompleted)}
+                  onClick={() => markAsCompleted(currentLesson.id || currentLesson.slug, !isCompleted)}
                   className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
                     isCompleted
                       ? 'bg-emerald-500 text-white border-emerald-500'
@@ -380,7 +422,9 @@ export default function Lesson() {
           <div className="w-full bg-black rounded-3xl overflow-hidden shadow-xl border border-slate-800 relative aspect-video">
             <iframe
               title={currentLesson.title}
-              src={`https://www.youtube-nocookie.com/embed/${currentLesson.youtubeVideoId}?rel=0&autoplay=0&enablejsapi=1`}
+              src={`https://www.youtube-nocookie.com/embed/${currentLesson.youtubeVideoId}?rel=0&autoplay=0&enablejsapi=1${
+                currentProgress.resumeTimestamp > 0 ? `&start=${currentProgress.resumeTimestamp}` : ''
+              }`}
               className="w-full h-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

@@ -15,6 +15,7 @@
     "db:seed": "node src/db/seed.js"
   },
   "dependencies": {
+    "@clerk/express": "^2.1.67",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.45.2",

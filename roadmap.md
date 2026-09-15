@@ -45,10 +45,10 @@ This roadmap defines the strict order of implementation for the Vibelearn projec
 ## Phase 4: Integration (Auth & Data Hookup)
 **Goal:** Secure the application and connect the frontend to the real backend APIs.
 
-- [ ] 4.1: Setup Express middleware in the `backend` to verify Clerk JWTs for protected routes.
-- [ ] 4.2: Swap frontend mock data with real API calls to the backend (`courses`, `modules`, `lessons`).
-- [ ] 4.3: Integrate progress tracking: periodically save video timestamps to the backend and implement "Mark as Complete".
-- [ ] 4.4: **CHECKPOINT:** End-to-end testing: User can log in, watch a video, leave, and resume from the saved timestamp.
+- [x] 4.1: Setup Express middleware in the `backend` to verify Clerk JWTs for protected routes.
+- [x] 4.2: Swap frontend mock data with real API calls to the backend (`courses`, `modules`, `lessons`).
+- [x] 4.3: Integrate progress tracking: periodically save video timestamps to the backend and implement "Mark as Complete".
+- [x] 4.4: **CHECKPOINT:** End-to-end testing: User can log in, watch a video, leave, and resume from the saved timestamp.
 
 ## Phase 5: Deployment
 **Goal:** Deploy the application to production.

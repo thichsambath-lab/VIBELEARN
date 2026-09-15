@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   Home,
@@ -19,17 +19,42 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { MOCK_COURSES } from '../services/mockData';
+import { fetchCourseBySlug } from '../services/api';
+import { useProgress } from '../hooks/useProgress';
 import ProgressBar from '../components/common/ProgressBar';
 
 export default function CourseDetail() {
   const { slug } = useParams();
+  const [course, setCourse] = useState(
+    () => MOCK_COURSES.find((c) => c.slug === slug) || MOCK_COURSES[0]
+  );
   const [showAllModules, setShowAllModules] = useState(false);
-  const [expandedModuleId, setExpandedModuleId] = useState('mod-5');
+  const [expandedModuleId, setExpandedModuleId] = useState(null);
   const [bookmarked, setBookmarked] = useState(false);
+  const { getCourseStats, getLessonProgress } = useProgress();
 
-  // Find course or fallback to first course
-  const course =
-    MOCK_COURSES.find((c) => c.slug === slug) || MOCK_COURSES[0];
+  useEffect(() => {
+    let isMounted = true;
+    async function load() {
+      try {
+        const liveCourse = await fetchCourseBySlug(slug);
+        if (isMounted && liveCourse) {
+          setCourse(liveCourse);
+          if (liveCourse.modules && liveCourse.modules.length > 0) {
+            setExpandedModuleId(liveCourse.modules[0].id);
+          }
+        }
+      } catch (err) {
+        console.warn('Using fallback for CourseDetail:', err);
+      }
+    }
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  const stats = getCourseStats(course);
 
   const visibleModules = showAllModules
     ? course.modules
@@ -129,8 +154,11 @@ export default function CourseDetail() {
                 </span>
               </div>
 
+              {/* Course Progress */}
+              <ProgressBar value={stats.percentage} showLabel className="pt-2 max-w-md" />
+
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
                   to={`/courses/${course.slug}/lessons/${activeLessonSlug}`}
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-base font-semibold text-white bg-emerald-500 hover:bg-emerald-600 transition-all shadow-md shadow-emerald-500/25"
@@ -266,34 +294,39 @@ export default function CourseDetail() {
                   {isExpanded && (
                     <div className="px-5 py-3 bg-white border-t border-slate-100 space-y-2">
                       {mod.lessons && mod.lessons.length > 0 ? (
-                        mod.lessons.map((lesson) => (
-                          <div
-                            key={lesson.id}
-                            className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-slate-50 transition-colors"
-                          >
-                            <div className="flex items-center gap-3">
-                              {lesson.isCompleted ? (
-                                <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                              ) : (
-                                <Play className="w-4 h-4 text-slate-400 flex-shrink-0" />
-                              )}
-                              <span className="text-xs font-medium text-slate-700">
-                                {lesson.title}
-                              </span>
+                        mod.lessons.map((lesson) => {
+                          const isLessonDone =
+                            lesson.isCompleted ||
+                            getLessonProgress(lesson.id || lesson.slug).isCompleted;
+                          return (
+                            <div
+                              key={lesson.id}
+                              className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-slate-50 transition-colors"
+                            >
+                              <div className="flex items-center gap-3">
+                                {isLessonDone ? (
+                                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                                ) : (
+                                  <Play className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                                )}
+                                <span className="text-xs font-medium text-slate-700">
+                                  {lesson.title}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-3">
+                                <span className="text-[11px] text-slate-400 font-mono">
+                                  {lesson.duration}
+                                </span>
+                                <Link
+                                  to={`/courses/${course.slug}/lessons/${lesson.slug}`}
+                                  className="text-xs font-semibold text-emerald-600 hover:text-emerald-700"
+                                >
+                                  View
+                                </Link>
+                              </div>
                             </div>
-                            <div className="flex items-center gap-3">
-                              <span className="text-[11px] text-slate-400 font-mono">
-                                {lesson.duration}
-                              </span>
-                              <Link
-                                to={`/courses/${course.slug}/lessons/${lesson.slug}`}
-                                className="text-xs font-semibold text-emerald-600 hover:text-emerald-700"
-                              >
-                                View
-                              </Link>
-                            </div>
-                          </div>
-                        ))
+                          );
+                        })
                       ) : (
                         <p className="text-xs text-slate-400 italic py-1">
                           Additional lessons for this module will unlock as you advance.

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { config } from './config/index.js';
 import { errorHandler, notFoundHandler } from './middlewares/errorHandler.js';
+import { clerkAuth } from './middlewares/auth.js';
 import courseRoutes from './routes/course.routes.js';
 import lessonRoutes from './routes/lesson.routes.js';
 import progressRoutes from './routes/progress.routes.js';
@@ -25,6 +26,9 @@ app.get('/api/health', (_req, res) => {
     environment: config.nodeEnv,
   });
 });
+
+// Attach Clerk authentication middleware
+app.use(clerkAuth);
 
 // API route mounts
 app.use('/api/courses', courseRoutes);

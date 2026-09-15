@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Search,
@@ -13,21 +13,45 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { MOCK_COURSES, MOCK_SEARCH_RESULTS } from '../services/mockData';
+import { fetchCourses } from '../services/api';
 import CourseCard from '../components/course/CourseCard';
 import Badge from '../components/common/Badge';
 
 export default function Catalog() {
+  const [courses, setCourses] = useState(MOCK_COURSES);
+  const [, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('Most Relevant');
 
+  useEffect(() => {
+    let isMounted = true;
+    async function load() {
+      setIsLoading(true);
+      try {
+        const data = await fetchCourses();
+        if (isMounted && data && data.length > 0) {
+          setCourses(data);
+        }
+      } catch (err) {
+        console.warn('Using fallback courses in Catalog:', err);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    }
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const filteredCourses = useMemo(() => {
-    if (!searchQuery.trim()) return MOCK_COURSES;
-    return MOCK_COURSES.filter(
+    if (!searchQuery.trim()) return courses;
+    return courses.filter(
       (c) =>
         c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.summary.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [searchQuery]);
+  }, [searchQuery, courses]);
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
